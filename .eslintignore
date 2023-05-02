@@ -1,0 +1,4 @@
+.prettierrc.js
+lint-staged.config.js
+
+.husky/**/*
