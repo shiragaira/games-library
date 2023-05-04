@@ -2,7 +2,7 @@ import { HomePageDocument, HomePageQuery } from '@/schema/api'
 import { useHomePageQueryCache } from '@/schema/api/cache'
 import { getPageData } from '@/utils/getPageData'
 
-export default function Home(props) {
+export default function Home() {
   return (
     <div>
       <h1>HOME</h1>
