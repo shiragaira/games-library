@@ -2,3 +2,5 @@
 lint-staged.config.js
 
 .husky/**/*
+
+src/schema/api/
