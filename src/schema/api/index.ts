@@ -1441,11 +1441,6 @@ export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type HomePageQuery = { __typename?: 'query_root', games: Array<{ __typename?: 'games', id: number, title: string }> };
 
-export type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AboutPageQuery = { __typename?: 'query_root', games: Array<{ __typename?: 'games', id: number, title: string }> };
-
 
 export const HomePageDocument = gql`
     query HomePage {
@@ -1482,38 +1477,3 @@ export function useHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<H
 export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
 export type HomePageLazyQueryHookResult = ReturnType<typeof useHomePageLazyQuery>;
 export type HomePageQueryResult = Apollo.QueryResult<HomePageQuery, HomePageQueryVariables>;
-export const AboutPageDocument = gql`
-    query AboutPage {
-  games {
-    id
-    title
-  }
-}
-    `;
-
-/**
- * __useAboutPageQuery__
- *
- * To run a query within a React component, call `useAboutPageQuery` and pass it any options that fit your needs.
- * When your component renders, `useAboutPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useAboutPageQuery({
- *   variables: {
- *   },
- * });
- */
-export function useAboutPageQuery(baseOptions?: Apollo.QueryHookOptions<AboutPageQuery, AboutPageQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AboutPageQuery, AboutPageQueryVariables>(AboutPageDocument, options);
-      }
-export function useAboutPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AboutPageQuery, AboutPageQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AboutPageQuery, AboutPageQueryVariables>(AboutPageDocument, options);
-        }
-export type AboutPageQueryHookResult = ReturnType<typeof useAboutPageQuery>;
-export type AboutPageLazyQueryHookResult = ReturnType<typeof useAboutPageLazyQuery>;
-export type AboutPageQueryResult = Apollo.QueryResult<AboutPageQuery, AboutPageQueryVariables>;

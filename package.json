@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "schema": "yarn schema:introspect && yarn schema:generate && yarn schema:generate-cache",
+    "schema:introspect": "graphql-codegen --config src/schema/codegen.introspect.yml",
+    "schema:generate": "graphql-codegen --config src/schema/codegen.generate.yml",
+    "schema:generate-cache": "graphql-codegen --config src/schema/codegen.generate-cache.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.7.13",
