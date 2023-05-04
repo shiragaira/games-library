@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "[Husky: Eslint started]"
 yarn lint-staged -c ./lint-staged.config.js $staged_files
+echo "[Hurry: Eslint finished]"

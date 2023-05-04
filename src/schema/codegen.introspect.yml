@@ -1,0 +1,14 @@
+overwrite: true
+schema:
+  - https://robust-swine-16.hasura.app/v1/graphql:
+      headers:
+        "Content-Type": "application/json"
+        "x-hasura-admin-secret": "A7T7740yPsf3lqA83OXkMDCNfWzu0x5QVjrYYufzaglFP5ZfN3zxWDd9ZW0td0Z8"
+generates:
+  src/schema/schema.json:
+    plugins:
+      - introspection
+
+  src/schema/schema.graphql:
+    plugins:
+      - schema-ast

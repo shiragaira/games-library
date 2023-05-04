@@ -2,3 +2,8 @@
 lint-staged.config.js
 
 .husky/**/*
+
+src/schema/api/
+schema/schema.json
+schema/schema.graphql
+src/schema/codegen.*.yml

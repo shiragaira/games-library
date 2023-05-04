@@ -1,0 +1,6 @@
+query HomePage {
+    games {
+        id
+        title
+    }
+}

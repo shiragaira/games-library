@@ -1,0 +1,21 @@
+overwrite: true
+schema:
+  - src/schema/schema.graphql
+documents:
+  - src/pages/**/*.graphql
+  - src/components/**/*.graphql
+generates:
+  src/schema/api/cache.ts:
+    plugins:
+      - add:
+          content: "import * as QueryOperationTypes from '~/schema/api/index';"
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      withRefetchFn: false
+      withMutationFn: false
+      dedupeOperationSuffix: true
+      apolloReactHooksImportFrom: 'src/schema/templates/customCacheHook'
+      hooksSuffix: 'Cache'
+      importOperationTypesFrom: 'QueryOperationTypes'
+      documentVariableSuffix: 'Document'
