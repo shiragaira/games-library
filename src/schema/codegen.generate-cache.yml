@@ -9,7 +9,7 @@ generates:
     plugins:
       - add:
           content: "import * as QueryOperationTypes from '~/schema/api/index';"
-      - typescript-react-instances
+      - typescript-react-apollo
     config:
       withHooks: true
       withRefetchFn: false
