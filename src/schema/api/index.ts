@@ -14,8 +14,8 @@ export type Scalars = {
   Int: number;
   Float: number;
   date: any;
-  money: any;
-  timestamptz: any;
+  numeric: any;
+  uuid: any;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -85,883 +85,616 @@ export type Date_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['date']>>;
 };
 
-/** columns and relationships of "games_library.devices" */
-export type Devices = {
-  __typename?: 'devices';
-  /** An array relationship */
-  games: Array<Games>;
-  /** An aggregate relationship */
-  games_aggregate: Games_Aggregate;
+/** columns and relationships of "games_library.GameClients" */
+export type GameClients = {
+  __typename?: 'gameClients';
   id: Scalars['Int'];
   name: Scalars['String'];
+  /** An array relationship */
+  userGames: Array<UserGames>;
+  /** An aggregate relationship */
+  userGames_aggregate: UserGames_Aggregate;
+  uuid: Scalars['uuid'];
 };
 
 
-/** columns and relationships of "games_library.devices" */
-export type DevicesGamesArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+/** columns and relationships of "games_library.GameClients" */
+export type GameClientsUserGamesArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
 
-/** columns and relationships of "games_library.devices" */
-export type DevicesGames_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+/** columns and relationships of "games_library.GameClients" */
+export type GameClientsUserGames_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
-/** aggregated selection of "games_library.devices" */
-export type Devices_Aggregate = {
-  __typename?: 'devices_aggregate';
-  aggregate?: Maybe<Devices_Aggregate_Fields>;
-  nodes: Array<Devices>;
+/** aggregated selection of "games_library.GameClients" */
+export type GameClients_Aggregate = {
+  __typename?: 'gameClients_aggregate';
+  aggregate?: Maybe<GameClients_Aggregate_Fields>;
+  nodes: Array<GameClients>;
 };
 
-/** aggregate fields of "games_library.devices" */
-export type Devices_Aggregate_Fields = {
-  __typename?: 'devices_aggregate_fields';
-  avg?: Maybe<Devices_Avg_Fields>;
+/** aggregate fields of "games_library.GameClients" */
+export type GameClients_Aggregate_Fields = {
+  __typename?: 'gameClients_aggregate_fields';
+  avg?: Maybe<GameClients_Avg_Fields>;
   count: Scalars['Int'];
-  max?: Maybe<Devices_Max_Fields>;
-  min?: Maybe<Devices_Min_Fields>;
-  stddev?: Maybe<Devices_Stddev_Fields>;
-  stddev_pop?: Maybe<Devices_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Devices_Stddev_Samp_Fields>;
-  sum?: Maybe<Devices_Sum_Fields>;
-  var_pop?: Maybe<Devices_Var_Pop_Fields>;
-  var_samp?: Maybe<Devices_Var_Samp_Fields>;
-  variance?: Maybe<Devices_Variance_Fields>;
+  max?: Maybe<GameClients_Max_Fields>;
+  min?: Maybe<GameClients_Min_Fields>;
+  stddev?: Maybe<GameClients_Stddev_Fields>;
+  stddev_pop?: Maybe<GameClients_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<GameClients_Stddev_Samp_Fields>;
+  sum?: Maybe<GameClients_Sum_Fields>;
+  var_pop?: Maybe<GameClients_Var_Pop_Fields>;
+  var_samp?: Maybe<GameClients_Var_Samp_Fields>;
+  variance?: Maybe<GameClients_Variance_Fields>;
 };
 
 
-/** aggregate fields of "games_library.devices" */
-export type Devices_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Devices_Select_Column>>;
+/** aggregate fields of "games_library.GameClients" */
+export type GameClients_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<GameClients_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
-export type Devices_Avg_Fields = {
-  __typename?: 'devices_avg_fields';
+export type GameClients_Avg_Fields = {
+  __typename?: 'gameClients_avg_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
-/** Boolean expression to filter rows from the table "games_library.devices". All fields are combined with a logical 'AND'. */
-export type Devices_Bool_Exp = {
-  _and?: InputMaybe<Array<Devices_Bool_Exp>>;
-  _not?: InputMaybe<Devices_Bool_Exp>;
-  _or?: InputMaybe<Array<Devices_Bool_Exp>>;
-  games?: InputMaybe<Games_Bool_Exp>;
-  games_aggregate?: InputMaybe<Games_Aggregate_Bool_Exp>;
+/** Boolean expression to filter rows from the table "games_library.GameClients". All fields are combined with a logical 'AND'. */
+export type GameClients_Bool_Exp = {
+  _and?: InputMaybe<Array<GameClients_Bool_Exp>>;
+  _not?: InputMaybe<GameClients_Bool_Exp>;
+  _or?: InputMaybe<Array<GameClients_Bool_Exp>>;
   id?: InputMaybe<Int_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  userGames?: InputMaybe<UserGames_Bool_Exp>;
+  userGames_aggregate?: InputMaybe<UserGames_Aggregate_Bool_Exp>;
+  uuid?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
-/** unique or primary key constraints on table "games_library.devices" */
-export enum Devices_Constraint {
-  /** unique or primary key constraint on columns "name" */
-  SystemsNameKey = 'systems_name_key',
+/** unique or primary key constraints on table "games_library.GameClients" */
+export enum GameClients_Constraint {
   /** unique or primary key constraint on columns "id" */
-  SystemsPkey = 'systems_pkey'
+  GameClientsPkey = 'GameClients_pkey'
 }
 
-/** input type for incrementing numeric columns in table "games_library.devices" */
-export type Devices_Inc_Input = {
+/** input type for incrementing numeric columns in table "games_library.GameClients" */
+export type GameClients_Inc_Input = {
   id?: InputMaybe<Scalars['Int']>;
 };
 
-/** input type for inserting data into table "games_library.devices" */
-export type Devices_Insert_Input = {
-  games?: InputMaybe<Games_Arr_Rel_Insert_Input>;
+/** input type for inserting data into table "games_library.GameClients" */
+export type GameClients_Insert_Input = {
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
+  userGames?: InputMaybe<UserGames_Arr_Rel_Insert_Input>;
+  uuid?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
-export type Devices_Max_Fields = {
-  __typename?: 'devices_max_fields';
+export type GameClients_Max_Fields = {
+  __typename?: 'gameClients_max_fields';
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  uuid?: Maybe<Scalars['uuid']>;
 };
 
 /** aggregate min on columns */
-export type Devices_Min_Fields = {
-  __typename?: 'devices_min_fields';
+export type GameClients_Min_Fields = {
+  __typename?: 'gameClients_min_fields';
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  uuid?: Maybe<Scalars['uuid']>;
 };
 
-/** response of any mutation on the table "games_library.devices" */
-export type Devices_Mutation_Response = {
-  __typename?: 'devices_mutation_response';
+/** response of any mutation on the table "games_library.GameClients" */
+export type GameClients_Mutation_Response = {
+  __typename?: 'gameClients_mutation_response';
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Devices>;
+  returning: Array<GameClients>;
 };
 
-/** input type for inserting object relation for remote table "games_library.devices" */
-export type Devices_Obj_Rel_Insert_Input = {
-  data: Devices_Insert_Input;
+/** input type for inserting object relation for remote table "games_library.GameClients" */
+export type GameClients_Obj_Rel_Insert_Input = {
+  data: GameClients_Insert_Input;
   /** upsert condition */
-  on_conflict?: InputMaybe<Devices_On_Conflict>;
+  on_conflict?: InputMaybe<GameClients_On_Conflict>;
 };
 
-/** on_conflict condition type for table "games_library.devices" */
-export type Devices_On_Conflict = {
-  constraint: Devices_Constraint;
-  update_columns?: Array<Devices_Update_Column>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+/** on_conflict condition type for table "games_library.GameClients" */
+export type GameClients_On_Conflict = {
+  constraint: GameClients_Constraint;
+  update_columns?: Array<GameClients_Update_Column>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
-/** Ordering options when selecting data from "games_library.devices". */
-export type Devices_Order_By = {
-  games_aggregate?: InputMaybe<Games_Aggregate_Order_By>;
+/** Ordering options when selecting data from "games_library.GameClients". */
+export type GameClients_Order_By = {
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  userGames_aggregate?: InputMaybe<UserGames_Aggregate_Order_By>;
+  uuid?: InputMaybe<Order_By>;
 };
 
-/** primary key columns input for table: games_library.devices */
-export type Devices_Pk_Columns_Input = {
+/** primary key columns input for table: games_library.GameClients */
+export type GameClients_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
 
-/** select columns of table "games_library.devices" */
-export enum Devices_Select_Column {
+/** select columns of table "games_library.GameClients" */
+export enum GameClients_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Uuid = 'uuid'
 }
 
-/** input type for updating data in table "games_library.devices" */
-export type Devices_Set_Input = {
+/** input type for updating data in table "games_library.GameClients" */
+export type GameClients_Set_Input = {
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
+  uuid?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate stddev on columns */
-export type Devices_Stddev_Fields = {
-  __typename?: 'devices_stddev_fields';
+export type GameClients_Stddev_Fields = {
+  __typename?: 'gameClients_stddev_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
-export type Devices_Stddev_Pop_Fields = {
-  __typename?: 'devices_stddev_pop_fields';
+export type GameClients_Stddev_Pop_Fields = {
+  __typename?: 'gameClients_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
-export type Devices_Stddev_Samp_Fields = {
-  __typename?: 'devices_stddev_samp_fields';
+export type GameClients_Stddev_Samp_Fields = {
+  __typename?: 'gameClients_stddev_samp_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
-/** Streaming cursor of the table "devices" */
-export type Devices_Stream_Cursor_Input = {
+/** Streaming cursor of the table "gameClients" */
+export type GameClients_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Devices_Stream_Cursor_Value_Input;
+  initial_value: GameClients_Stream_Cursor_Value_Input;
   /** cursor ordering */
   ordering?: InputMaybe<Cursor_Ordering>;
 };
 
 /** Initial value of the column from where the streaming should start */
-export type Devices_Stream_Cursor_Value_Input = {
+export type GameClients_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
+  uuid?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate sum on columns */
-export type Devices_Sum_Fields = {
-  __typename?: 'devices_sum_fields';
+export type GameClients_Sum_Fields = {
+  __typename?: 'gameClients_sum_fields';
   id?: Maybe<Scalars['Int']>;
 };
 
-/** update columns of table "games_library.devices" */
-export enum Devices_Update_Column {
+/** update columns of table "games_library.GameClients" */
+export enum GameClients_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
+  /** column name */
+  Uuid = 'uuid'
 }
 
-export type Devices_Updates = {
+export type GameClients_Updates = {
   /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Devices_Inc_Input>;
+  _inc?: InputMaybe<GameClients_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Devices_Set_Input>;
+  _set?: InputMaybe<GameClients_Set_Input>;
   /** filter the rows which have to be updated */
-  where: Devices_Bool_Exp;
+  where: GameClients_Bool_Exp;
 };
 
 /** aggregate var_pop on columns */
-export type Devices_Var_Pop_Fields = {
-  __typename?: 'devices_var_pop_fields';
+export type GameClients_Var_Pop_Fields = {
+  __typename?: 'gameClients_var_pop_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
-export type Devices_Var_Samp_Fields = {
-  __typename?: 'devices_var_samp_fields';
+export type GameClients_Var_Samp_Fields = {
+  __typename?: 'gameClients_var_samp_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
-export type Devices_Variance_Fields = {
-  __typename?: 'devices_variance_fields';
+export type GameClients_Variance_Fields = {
+  __typename?: 'gameClients_variance_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
-/** columns and relationships of "games_library.games" */
-export type Games = {
-  __typename?: 'games';
-  cover_image_url?: Maybe<Scalars['String']>;
-  created_at: Scalars['timestamptz'];
-  /** An object relationship */
-  device?: Maybe<Devices>;
-  device_id?: Maybe<Scalars['Int']>;
-  id: Scalars['Int'];
-  /** An object relationship */
-  platform?: Maybe<Platforms>;
-  platform_id?: Maybe<Scalars['Int']>;
-  purchase_date?: Maybe<Scalars['date']>;
-  purchase_price?: Maybe<Scalars['money']>;
-  title: Scalars['String'];
-  updated_at: Scalars['timestamptz'];
+/** columns and relationships of "games_library.GameStatuses" */
+export type GameStatuses = {
+  __typename?: 'gameStatuses';
+  id: Scalars['String'];
+  /** An array relationship */
+  userGames: Array<UserGames>;
+  /** An aggregate relationship */
+  userGames_aggregate: UserGames_Aggregate;
 };
 
-/** aggregated selection of "games_library.games" */
-export type Games_Aggregate = {
-  __typename?: 'games_aggregate';
-  aggregate?: Maybe<Games_Aggregate_Fields>;
-  nodes: Array<Games>;
+
+/** columns and relationships of "games_library.GameStatuses" */
+export type GameStatusesUserGamesArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
-export type Games_Aggregate_Bool_Exp = {
-  count?: InputMaybe<Games_Aggregate_Bool_Exp_Count>;
+
+/** columns and relationships of "games_library.GameStatuses" */
+export type GameStatusesUserGames_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
-export type Games_Aggregate_Bool_Exp_Count = {
-  arguments?: InputMaybe<Array<Games_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-  filter?: InputMaybe<Games_Bool_Exp>;
-  predicate: Int_Comparison_Exp;
+/** aggregated selection of "games_library.GameStatuses" */
+export type GameStatuses_Aggregate = {
+  __typename?: 'gameStatuses_aggregate';
+  aggregate?: Maybe<GameStatuses_Aggregate_Fields>;
+  nodes: Array<GameStatuses>;
 };
 
-/** aggregate fields of "games_library.games" */
-export type Games_Aggregate_Fields = {
-  __typename?: 'games_aggregate_fields';
-  avg?: Maybe<Games_Avg_Fields>;
+/** aggregate fields of "games_library.GameStatuses" */
+export type GameStatuses_Aggregate_Fields = {
+  __typename?: 'gameStatuses_aggregate_fields';
   count: Scalars['Int'];
-  max?: Maybe<Games_Max_Fields>;
-  min?: Maybe<Games_Min_Fields>;
-  stddev?: Maybe<Games_Stddev_Fields>;
-  stddev_pop?: Maybe<Games_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Games_Stddev_Samp_Fields>;
-  sum?: Maybe<Games_Sum_Fields>;
-  var_pop?: Maybe<Games_Var_Pop_Fields>;
-  var_samp?: Maybe<Games_Var_Samp_Fields>;
-  variance?: Maybe<Games_Variance_Fields>;
+  max?: Maybe<GameStatuses_Max_Fields>;
+  min?: Maybe<GameStatuses_Min_Fields>;
 };
 
 
-/** aggregate fields of "games_library.games" */
-export type Games_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Games_Select_Column>>;
+/** aggregate fields of "games_library.GameStatuses" */
+export type GameStatuses_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<GameStatuses_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "games_library.games" */
-export type Games_Aggregate_Order_By = {
-  avg?: InputMaybe<Games_Avg_Order_By>;
-  count?: InputMaybe<Order_By>;
-  max?: InputMaybe<Games_Max_Order_By>;
-  min?: InputMaybe<Games_Min_Order_By>;
-  stddev?: InputMaybe<Games_Stddev_Order_By>;
-  stddev_pop?: InputMaybe<Games_Stddev_Pop_Order_By>;
-  stddev_samp?: InputMaybe<Games_Stddev_Samp_Order_By>;
-  sum?: InputMaybe<Games_Sum_Order_By>;
-  var_pop?: InputMaybe<Games_Var_Pop_Order_By>;
-  var_samp?: InputMaybe<Games_Var_Samp_Order_By>;
-  variance?: InputMaybe<Games_Variance_Order_By>;
+/** Boolean expression to filter rows from the table "games_library.GameStatuses". All fields are combined with a logical 'AND'. */
+export type GameStatuses_Bool_Exp = {
+  _and?: InputMaybe<Array<GameStatuses_Bool_Exp>>;
+  _not?: InputMaybe<GameStatuses_Bool_Exp>;
+  _or?: InputMaybe<Array<GameStatuses_Bool_Exp>>;
+  id?: InputMaybe<String_Comparison_Exp>;
+  userGames?: InputMaybe<UserGames_Bool_Exp>;
+  userGames_aggregate?: InputMaybe<UserGames_Aggregate_Bool_Exp>;
 };
 
-/** input type for inserting array relation for remote table "games_library.games" */
-export type Games_Arr_Rel_Insert_Input = {
-  data: Array<Games_Insert_Input>;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Games_On_Conflict>;
-};
-
-/** aggregate avg on columns */
-export type Games_Avg_Fields = {
-  __typename?: 'games_avg_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by avg() on columns of table "games_library.games" */
-export type Games_Avg_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** Boolean expression to filter rows from the table "games_library.games". All fields are combined with a logical 'AND'. */
-export type Games_Bool_Exp = {
-  _and?: InputMaybe<Array<Games_Bool_Exp>>;
-  _not?: InputMaybe<Games_Bool_Exp>;
-  _or?: InputMaybe<Array<Games_Bool_Exp>>;
-  cover_image_url?: InputMaybe<String_Comparison_Exp>;
-  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  device?: InputMaybe<Devices_Bool_Exp>;
-  device_id?: InputMaybe<Int_Comparison_Exp>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-  platform?: InputMaybe<Platforms_Bool_Exp>;
-  platform_id?: InputMaybe<Int_Comparison_Exp>;
-  purchase_date?: InputMaybe<Date_Comparison_Exp>;
-  purchase_price?: InputMaybe<Money_Comparison_Exp>;
-  title?: InputMaybe<String_Comparison_Exp>;
-  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "games_library.games" */
-export enum Games_Constraint {
+/** unique or primary key constraints on table "games_library.GameStatuses" */
+export enum GameStatuses_Constraint {
   /** unique or primary key constraint on columns "id" */
-  GamesPkey = 'games_pkey'
+  GameStatusesPkey = 'GameStatuses_pkey'
 }
 
-/** input type for incrementing numeric columns in table "games_library.games" */
-export type Games_Inc_Input = {
-  device_id?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['Int']>;
-  platform_id?: InputMaybe<Scalars['Int']>;
-  purchase_price?: InputMaybe<Scalars['money']>;
+export enum GameStatuses_Enum {
+  Abadoned = 'abadoned',
+  Backlog = 'backlog',
+  Completed = 'completed',
+  InProgress = 'in_progress'
+}
+
+/** Boolean expression to compare columns of type "gameStatuses_enum". All fields are combined with logical 'AND'. */
+export type GameStatuses_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<GameStatuses_Enum>;
+  _in?: InputMaybe<Array<GameStatuses_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<GameStatuses_Enum>;
+  _nin?: InputMaybe<Array<GameStatuses_Enum>>;
 };
 
-/** input type for inserting data into table "games_library.games" */
-export type Games_Insert_Input = {
-  cover_image_url?: InputMaybe<Scalars['String']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  device?: InputMaybe<Devices_Obj_Rel_Insert_Input>;
-  device_id?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['Int']>;
-  platform?: InputMaybe<Platforms_Obj_Rel_Insert_Input>;
-  platform_id?: InputMaybe<Scalars['Int']>;
-  purchase_date?: InputMaybe<Scalars['date']>;
-  purchase_price?: InputMaybe<Scalars['money']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
+/** input type for inserting data into table "games_library.GameStatuses" */
+export type GameStatuses_Insert_Input = {
+  id?: InputMaybe<Scalars['String']>;
+  userGames?: InputMaybe<UserGames_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
-export type Games_Max_Fields = {
-  __typename?: 'games_max_fields';
-  cover_image_url?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  device_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  platform_id?: Maybe<Scalars['Int']>;
-  purchase_date?: Maybe<Scalars['date']>;
-  purchase_price?: Maybe<Scalars['money']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** order by max() on columns of table "games_library.games" */
-export type Games_Max_Order_By = {
-  cover_image_url?: InputMaybe<Order_By>;
-  created_at?: InputMaybe<Order_By>;
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_date?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-  title?: InputMaybe<Order_By>;
-  updated_at?: InputMaybe<Order_By>;
+export type GameStatuses_Max_Fields = {
+  __typename?: 'gameStatuses_max_fields';
+  id?: Maybe<Scalars['String']>;
 };
 
 /** aggregate min on columns */
-export type Games_Min_Fields = {
-  __typename?: 'games_min_fields';
-  cover_image_url?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  device_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  platform_id?: Maybe<Scalars['Int']>;
-  purchase_date?: Maybe<Scalars['date']>;
-  purchase_price?: Maybe<Scalars['money']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+export type GameStatuses_Min_Fields = {
+  __typename?: 'gameStatuses_min_fields';
+  id?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "games_library.games" */
-export type Games_Min_Order_By = {
-  cover_image_url?: InputMaybe<Order_By>;
-  created_at?: InputMaybe<Order_By>;
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_date?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-  title?: InputMaybe<Order_By>;
-  updated_at?: InputMaybe<Order_By>;
-};
-
-/** response of any mutation on the table "games_library.games" */
-export type Games_Mutation_Response = {
-  __typename?: 'games_mutation_response';
+/** response of any mutation on the table "games_library.GameStatuses" */
+export type GameStatuses_Mutation_Response = {
+  __typename?: 'gameStatuses_mutation_response';
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Games>;
+  returning: Array<GameStatuses>;
 };
 
-/** on_conflict condition type for table "games_library.games" */
-export type Games_On_Conflict = {
-  constraint: Games_Constraint;
-  update_columns?: Array<Games_Update_Column>;
-  where?: InputMaybe<Games_Bool_Exp>;
+/** on_conflict condition type for table "games_library.GameStatuses" */
+export type GameStatuses_On_Conflict = {
+  constraint: GameStatuses_Constraint;
+  update_columns?: Array<GameStatuses_Update_Column>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
 };
 
-/** Ordering options when selecting data from "games_library.games". */
-export type Games_Order_By = {
-  cover_image_url?: InputMaybe<Order_By>;
-  created_at?: InputMaybe<Order_By>;
-  device?: InputMaybe<Devices_Order_By>;
-  device_id?: InputMaybe<Order_By>;
+/** Ordering options when selecting data from "games_library.GameStatuses". */
+export type GameStatuses_Order_By = {
   id?: InputMaybe<Order_By>;
-  platform?: InputMaybe<Platforms_Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_date?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-  title?: InputMaybe<Order_By>;
-  updated_at?: InputMaybe<Order_By>;
+  userGames_aggregate?: InputMaybe<UserGames_Aggregate_Order_By>;
 };
 
-/** primary key columns input for table: games_library.games */
-export type Games_Pk_Columns_Input = {
-  id: Scalars['Int'];
+/** primary key columns input for table: games_library.GameStatuses */
+export type GameStatuses_Pk_Columns_Input = {
+  id: Scalars['String'];
 };
 
-/** select columns of table "games_library.games" */
-export enum Games_Select_Column {
+/** select columns of table "games_library.GameStatuses" */
+export enum GameStatuses_Select_Column {
   /** column name */
-  CoverImageUrl = 'cover_image_url',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  DeviceId = 'device_id',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  PlatformId = 'platform_id',
-  /** column name */
-  PurchaseDate = 'purchase_date',
-  /** column name */
-  PurchasePrice = 'purchase_price',
-  /** column name */
-  Title = 'title',
-  /** column name */
-  UpdatedAt = 'updated_at'
+  Id = 'id'
 }
 
-/** input type for updating data in table "games_library.games" */
-export type Games_Set_Input = {
-  cover_image_url?: InputMaybe<Scalars['String']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  device_id?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['Int']>;
-  platform_id?: InputMaybe<Scalars['Int']>;
-  purchase_date?: InputMaybe<Scalars['date']>;
-  purchase_price?: InputMaybe<Scalars['money']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
+/** input type for updating data in table "games_library.GameStatuses" */
+export type GameStatuses_Set_Input = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
-/** aggregate stddev on columns */
-export type Games_Stddev_Fields = {
-  __typename?: 'games_stddev_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev() on columns of table "games_library.games" */
-export type Games_Stddev_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Games_Stddev_Pop_Fields = {
-  __typename?: 'games_stddev_pop_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_pop() on columns of table "games_library.games" */
-export type Games_Stddev_Pop_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Games_Stddev_Samp_Fields = {
-  __typename?: 'games_stddev_samp_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_samp() on columns of table "games_library.games" */
-export type Games_Stddev_Samp_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** Streaming cursor of the table "games" */
-export type Games_Stream_Cursor_Input = {
+/** Streaming cursor of the table "gameStatuses" */
+export type GameStatuses_Stream_Cursor_Input = {
   /** Stream column input with initial value */
-  initial_value: Games_Stream_Cursor_Value_Input;
+  initial_value: GameStatuses_Stream_Cursor_Value_Input;
   /** cursor ordering */
   ordering?: InputMaybe<Cursor_Ordering>;
 };
 
 /** Initial value of the column from where the streaming should start */
-export type Games_Stream_Cursor_Value_Input = {
-  cover_image_url?: InputMaybe<Scalars['String']>;
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  device_id?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['Int']>;
-  platform_id?: InputMaybe<Scalars['Int']>;
-  purchase_date?: InputMaybe<Scalars['date']>;
-  purchase_price?: InputMaybe<Scalars['money']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
+export type GameStatuses_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
-/** aggregate sum on columns */
-export type Games_Sum_Fields = {
-  __typename?: 'games_sum_fields';
-  device_id?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
-  platform_id?: Maybe<Scalars['Int']>;
-  purchase_price?: Maybe<Scalars['money']>;
-};
-
-/** order by sum() on columns of table "games_library.games" */
-export type Games_Sum_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** update columns of table "games_library.games" */
-export enum Games_Update_Column {
+/** update columns of table "games_library.GameStatuses" */
+export enum GameStatuses_Update_Column {
   /** column name */
-  CoverImageUrl = 'cover_image_url',
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  DeviceId = 'device_id',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  PlatformId = 'platform_id',
-  /** column name */
-  PurchaseDate = 'purchase_date',
-  /** column name */
-  PurchasePrice = 'purchase_price',
-  /** column name */
-  Title = 'title',
-  /** column name */
-  UpdatedAt = 'updated_at'
+  Id = 'id'
 }
 
-export type Games_Updates = {
-  /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Games_Inc_Input>;
+export type GameStatuses_Updates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Games_Set_Input>;
+  _set?: InputMaybe<GameStatuses_Set_Input>;
   /** filter the rows which have to be updated */
-  where: Games_Bool_Exp;
-};
-
-/** aggregate var_pop on columns */
-export type Games_Var_Pop_Fields = {
-  __typename?: 'games_var_pop_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_pop() on columns of table "games_library.games" */
-export type Games_Var_Pop_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** aggregate var_samp on columns */
-export type Games_Var_Samp_Fields = {
-  __typename?: 'games_var_samp_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_samp() on columns of table "games_library.games" */
-export type Games_Var_Samp_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** aggregate variance on columns */
-export type Games_Variance_Fields = {
-  __typename?: 'games_variance_fields';
-  device_id?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  platform_id?: Maybe<Scalars['Float']>;
-  purchase_price?: Maybe<Scalars['Float']>;
-};
-
-/** order by variance() on columns of table "games_library.games" */
-export type Games_Variance_Order_By = {
-  device_id?: InputMaybe<Order_By>;
-  id?: InputMaybe<Order_By>;
-  platform_id?: InputMaybe<Order_By>;
-  purchase_price?: InputMaybe<Order_By>;
-};
-
-/** Boolean expression to compare columns of type "money". All fields are combined with logical 'AND'. */
-export type Money_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['money']>;
-  _gt?: InputMaybe<Scalars['money']>;
-  _gte?: InputMaybe<Scalars['money']>;
-  _in?: InputMaybe<Array<Scalars['money']>>;
-  _is_null?: InputMaybe<Scalars['Boolean']>;
-  _lt?: InputMaybe<Scalars['money']>;
-  _lte?: InputMaybe<Scalars['money']>;
-  _neq?: InputMaybe<Scalars['money']>;
-  _nin?: InputMaybe<Array<Scalars['money']>>;
+  where: GameStatuses_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
-  /** delete data from the table: "games_library.devices" */
-  delete_devices?: Maybe<Devices_Mutation_Response>;
-  /** delete single row from the table: "games_library.devices" */
-  delete_devices_by_pk?: Maybe<Devices>;
-  /** delete data from the table: "games_library.games" */
-  delete_games?: Maybe<Games_Mutation_Response>;
-  /** delete single row from the table: "games_library.games" */
-  delete_games_by_pk?: Maybe<Games>;
-  /** delete data from the table: "games_library.platforms" */
-  delete_platforms?: Maybe<Platforms_Mutation_Response>;
-  /** delete single row from the table: "games_library.platforms" */
-  delete_platforms_by_pk?: Maybe<Platforms>;
-  /** insert data into the table: "games_library.devices" */
-  insert_devices?: Maybe<Devices_Mutation_Response>;
-  /** insert a single row into the table: "games_library.devices" */
-  insert_devices_one?: Maybe<Devices>;
-  /** insert data into the table: "games_library.games" */
-  insert_games?: Maybe<Games_Mutation_Response>;
-  /** insert a single row into the table: "games_library.games" */
-  insert_games_one?: Maybe<Games>;
-  /** insert data into the table: "games_library.platforms" */
-  insert_platforms?: Maybe<Platforms_Mutation_Response>;
-  /** insert a single row into the table: "games_library.platforms" */
-  insert_platforms_one?: Maybe<Platforms>;
-  /** update data of the table: "games_library.devices" */
-  update_devices?: Maybe<Devices_Mutation_Response>;
-  /** update single row of the table: "games_library.devices" */
-  update_devices_by_pk?: Maybe<Devices>;
-  /** update multiples rows of table: "games_library.devices" */
-  update_devices_many?: Maybe<Array<Maybe<Devices_Mutation_Response>>>;
-  /** update data of the table: "games_library.games" */
-  update_games?: Maybe<Games_Mutation_Response>;
-  /** update single row of the table: "games_library.games" */
-  update_games_by_pk?: Maybe<Games>;
-  /** update multiples rows of table: "games_library.games" */
-  update_games_many?: Maybe<Array<Maybe<Games_Mutation_Response>>>;
-  /** update data of the table: "games_library.platforms" */
-  update_platforms?: Maybe<Platforms_Mutation_Response>;
-  /** update single row of the table: "games_library.platforms" */
-  update_platforms_by_pk?: Maybe<Platforms>;
-  /** update multiples rows of table: "games_library.platforms" */
-  update_platforms_many?: Maybe<Array<Maybe<Platforms_Mutation_Response>>>;
+  /** delete data from the table: "games_library.GameClients" */
+  delete_gameClients?: Maybe<GameClients_Mutation_Response>;
+  /** delete single row from the table: "games_library.GameClients" */
+  delete_gameClients_by_pk?: Maybe<GameClients>;
+  /** delete data from the table: "games_library.GameStatuses" */
+  delete_gameStatuses?: Maybe<GameStatuses_Mutation_Response>;
+  /** delete single row from the table: "games_library.GameStatuses" */
+  delete_gameStatuses_by_pk?: Maybe<GameStatuses>;
+  /** delete data from the table: "games_library.UserGames" */
+  delete_userGames?: Maybe<UserGames_Mutation_Response>;
+  /** delete single row from the table: "games_library.UserGames" */
+  delete_userGames_by_pk?: Maybe<UserGames>;
+  /** insert data into the table: "games_library.GameClients" */
+  insert_gameClients?: Maybe<GameClients_Mutation_Response>;
+  /** insert a single row into the table: "games_library.GameClients" */
+  insert_gameClients_one?: Maybe<GameClients>;
+  /** insert data into the table: "games_library.GameStatuses" */
+  insert_gameStatuses?: Maybe<GameStatuses_Mutation_Response>;
+  /** insert a single row into the table: "games_library.GameStatuses" */
+  insert_gameStatuses_one?: Maybe<GameStatuses>;
+  /** insert data into the table: "games_library.UserGames" */
+  insert_userGames?: Maybe<UserGames_Mutation_Response>;
+  /** insert a single row into the table: "games_library.UserGames" */
+  insert_userGames_one?: Maybe<UserGames>;
+  /** update data of the table: "games_library.GameClients" */
+  update_gameClients?: Maybe<GameClients_Mutation_Response>;
+  /** update single row of the table: "games_library.GameClients" */
+  update_gameClients_by_pk?: Maybe<GameClients>;
+  /** update multiples rows of table: "games_library.GameClients" */
+  update_gameClients_many?: Maybe<Array<Maybe<GameClients_Mutation_Response>>>;
+  /** update data of the table: "games_library.GameStatuses" */
+  update_gameStatuses?: Maybe<GameStatuses_Mutation_Response>;
+  /** update single row of the table: "games_library.GameStatuses" */
+  update_gameStatuses_by_pk?: Maybe<GameStatuses>;
+  /** update multiples rows of table: "games_library.GameStatuses" */
+  update_gameStatuses_many?: Maybe<Array<Maybe<GameStatuses_Mutation_Response>>>;
+  /** update data of the table: "games_library.UserGames" */
+  update_userGames?: Maybe<UserGames_Mutation_Response>;
+  /** update single row of the table: "games_library.UserGames" */
+  update_userGames_by_pk?: Maybe<UserGames>;
+  /** update multiples rows of table: "games_library.UserGames" */
+  update_userGames_many?: Maybe<Array<Maybe<UserGames_Mutation_Response>>>;
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_DevicesArgs = {
-  where: Devices_Bool_Exp;
+export type Mutation_RootDelete_GameClientsArgs = {
+  where: GameClients_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_Devices_By_PkArgs = {
+export type Mutation_RootDelete_GameClients_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_GamesArgs = {
-  where: Games_Bool_Exp;
+export type Mutation_RootDelete_GameStatusesArgs = {
+  where: GameStatuses_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_Games_By_PkArgs = {
+export type Mutation_RootDelete_GameStatuses_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_UserGamesArgs = {
+  where: UserGames_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_UserGames_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_PlatformsArgs = {
-  where: Platforms_Bool_Exp;
+export type Mutation_RootInsert_GameClientsArgs = {
+  objects: Array<GameClients_Insert_Input>;
+  on_conflict?: InputMaybe<GameClients_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootDelete_Platforms_By_PkArgs = {
-  id: Scalars['Int'];
+export type Mutation_RootInsert_GameClients_OneArgs = {
+  object: GameClients_Insert_Input;
+  on_conflict?: InputMaybe<GameClients_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_DevicesArgs = {
-  objects: Array<Devices_Insert_Input>;
-  on_conflict?: InputMaybe<Devices_On_Conflict>;
+export type Mutation_RootInsert_GameStatusesArgs = {
+  objects: Array<GameStatuses_Insert_Input>;
+  on_conflict?: InputMaybe<GameStatuses_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_Devices_OneArgs = {
-  object: Devices_Insert_Input;
-  on_conflict?: InputMaybe<Devices_On_Conflict>;
+export type Mutation_RootInsert_GameStatuses_OneArgs = {
+  object: GameStatuses_Insert_Input;
+  on_conflict?: InputMaybe<GameStatuses_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_GamesArgs = {
-  objects: Array<Games_Insert_Input>;
-  on_conflict?: InputMaybe<Games_On_Conflict>;
+export type Mutation_RootInsert_UserGamesArgs = {
+  objects: Array<UserGames_Insert_Input>;
+  on_conflict?: InputMaybe<UserGames_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_Games_OneArgs = {
-  object: Games_Insert_Input;
-  on_conflict?: InputMaybe<Games_On_Conflict>;
+export type Mutation_RootInsert_UserGames_OneArgs = {
+  object: UserGames_Insert_Input;
+  on_conflict?: InputMaybe<UserGames_On_Conflict>;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_PlatformsArgs = {
-  objects: Array<Platforms_Insert_Input>;
-  on_conflict?: InputMaybe<Platforms_On_Conflict>;
+export type Mutation_RootUpdate_GameClientsArgs = {
+  _inc?: InputMaybe<GameClients_Inc_Input>;
+  _set?: InputMaybe<GameClients_Set_Input>;
+  where: GameClients_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootInsert_Platforms_OneArgs = {
-  object: Platforms_Insert_Input;
-  on_conflict?: InputMaybe<Platforms_On_Conflict>;
+export type Mutation_RootUpdate_GameClients_By_PkArgs = {
+  _inc?: InputMaybe<GameClients_Inc_Input>;
+  _set?: InputMaybe<GameClients_Set_Input>;
+  pk_columns: GameClients_Pk_Columns_Input;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_DevicesArgs = {
-  _inc?: InputMaybe<Devices_Inc_Input>;
-  _set?: InputMaybe<Devices_Set_Input>;
-  where: Devices_Bool_Exp;
+export type Mutation_RootUpdate_GameClients_ManyArgs = {
+  updates: Array<GameClients_Updates>;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Devices_By_PkArgs = {
-  _inc?: InputMaybe<Devices_Inc_Input>;
-  _set?: InputMaybe<Devices_Set_Input>;
-  pk_columns: Devices_Pk_Columns_Input;
+export type Mutation_RootUpdate_GameStatusesArgs = {
+  _set?: InputMaybe<GameStatuses_Set_Input>;
+  where: GameStatuses_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Devices_ManyArgs = {
-  updates: Array<Devices_Updates>;
+export type Mutation_RootUpdate_GameStatuses_By_PkArgs = {
+  _set?: InputMaybe<GameStatuses_Set_Input>;
+  pk_columns: GameStatuses_Pk_Columns_Input;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_GamesArgs = {
-  _inc?: InputMaybe<Games_Inc_Input>;
-  _set?: InputMaybe<Games_Set_Input>;
-  where: Games_Bool_Exp;
+export type Mutation_RootUpdate_GameStatuses_ManyArgs = {
+  updates: Array<GameStatuses_Updates>;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Games_By_PkArgs = {
-  _inc?: InputMaybe<Games_Inc_Input>;
-  _set?: InputMaybe<Games_Set_Input>;
-  pk_columns: Games_Pk_Columns_Input;
+export type Mutation_RootUpdate_UserGamesArgs = {
+  _inc?: InputMaybe<UserGames_Inc_Input>;
+  _set?: InputMaybe<UserGames_Set_Input>;
+  where: UserGames_Bool_Exp;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Games_ManyArgs = {
-  updates: Array<Games_Updates>;
+export type Mutation_RootUpdate_UserGames_By_PkArgs = {
+  _inc?: InputMaybe<UserGames_Inc_Input>;
+  _set?: InputMaybe<UserGames_Set_Input>;
+  pk_columns: UserGames_Pk_Columns_Input;
 };
 
 
 /** mutation root */
-export type Mutation_RootUpdate_PlatformsArgs = {
-  _inc?: InputMaybe<Platforms_Inc_Input>;
-  _set?: InputMaybe<Platforms_Set_Input>;
-  where: Platforms_Bool_Exp;
+export type Mutation_RootUpdate_UserGames_ManyArgs = {
+  updates: Array<UserGames_Updates>;
 };
 
-
-/** mutation root */
-export type Mutation_RootUpdate_Platforms_By_PkArgs = {
-  _inc?: InputMaybe<Platforms_Inc_Input>;
-  _set?: InputMaybe<Platforms_Set_Input>;
-  pk_columns: Platforms_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Platforms_ManyArgs = {
-  updates: Array<Platforms_Updates>;
+/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
+export type Numeric_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['numeric']>;
+  _gt?: InputMaybe<Scalars['numeric']>;
+  _gte?: InputMaybe<Scalars['numeric']>;
+  _in?: InputMaybe<Array<Scalars['numeric']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['numeric']>;
+  _lte?: InputMaybe<Scalars['numeric']>;
+  _neq?: InputMaybe<Scalars['numeric']>;
+  _nin?: InputMaybe<Array<Scalars['numeric']>>;
 };
 
 /** column ordering options */
@@ -980,473 +713,681 @@ export enum Order_By {
   DescNullsLast = 'desc_nulls_last'
 }
 
-/** columns and relationships of "games_library.platforms" */
-export type Platforms = {
-  __typename?: 'platforms';
-  /** An array relationship */
-  games: Array<Games>;
-  /** An aggregate relationship */
-  games_aggregate: Games_Aggregate;
-  id: Scalars['Int'];
-  name: Scalars['String'];
-};
-
-
-/** columns and relationships of "games_library.platforms" */
-export type PlatformsGamesArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
-};
-
-
-/** columns and relationships of "games_library.platforms" */
-export type PlatformsGames_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
-};
-
-/** aggregated selection of "games_library.platforms" */
-export type Platforms_Aggregate = {
-  __typename?: 'platforms_aggregate';
-  aggregate?: Maybe<Platforms_Aggregate_Fields>;
-  nodes: Array<Platforms>;
-};
-
-/** aggregate fields of "games_library.platforms" */
-export type Platforms_Aggregate_Fields = {
-  __typename?: 'platforms_aggregate_fields';
-  avg?: Maybe<Platforms_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Platforms_Max_Fields>;
-  min?: Maybe<Platforms_Min_Fields>;
-  stddev?: Maybe<Platforms_Stddev_Fields>;
-  stddev_pop?: Maybe<Platforms_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Platforms_Stddev_Samp_Fields>;
-  sum?: Maybe<Platforms_Sum_Fields>;
-  var_pop?: Maybe<Platforms_Var_Pop_Fields>;
-  var_samp?: Maybe<Platforms_Var_Samp_Fields>;
-  variance?: Maybe<Platforms_Variance_Fields>;
-};
-
-
-/** aggregate fields of "games_library.platforms" */
-export type Platforms_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Platforms_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Platforms_Avg_Fields = {
-  __typename?: 'platforms_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** Boolean expression to filter rows from the table "games_library.platforms". All fields are combined with a logical 'AND'. */
-export type Platforms_Bool_Exp = {
-  _and?: InputMaybe<Array<Platforms_Bool_Exp>>;
-  _not?: InputMaybe<Platforms_Bool_Exp>;
-  _or?: InputMaybe<Array<Platforms_Bool_Exp>>;
-  games?: InputMaybe<Games_Bool_Exp>;
-  games_aggregate?: InputMaybe<Games_Aggregate_Bool_Exp>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-  name?: InputMaybe<String_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "games_library.platforms" */
-export enum Platforms_Constraint {
-  /** unique or primary key constraint on columns "name" */
-  PlatformsNameKey = 'platforms_name_key',
-  /** unique or primary key constraint on columns "id" */
-  PlatformsPkey = 'platforms_pkey'
-}
-
-/** input type for incrementing numeric columns in table "games_library.platforms" */
-export type Platforms_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "games_library.platforms" */
-export type Platforms_Insert_Input = {
-  games?: InputMaybe<Games_Arr_Rel_Insert_Input>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregate max on columns */
-export type Platforms_Max_Fields = {
-  __typename?: 'platforms_max_fields';
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-/** aggregate min on columns */
-export type Platforms_Min_Fields = {
-  __typename?: 'platforms_min_fields';
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-/** response of any mutation on the table "games_library.platforms" */
-export type Platforms_Mutation_Response = {
-  __typename?: 'platforms_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Platforms>;
-};
-
-/** input type for inserting object relation for remote table "games_library.platforms" */
-export type Platforms_Obj_Rel_Insert_Input = {
-  data: Platforms_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Platforms_On_Conflict>;
-};
-
-/** on_conflict condition type for table "games_library.platforms" */
-export type Platforms_On_Conflict = {
-  constraint: Platforms_Constraint;
-  update_columns?: Array<Platforms_Update_Column>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "games_library.platforms". */
-export type Platforms_Order_By = {
-  games_aggregate?: InputMaybe<Games_Aggregate_Order_By>;
-  id?: InputMaybe<Order_By>;
-  name?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: games_library.platforms */
-export type Platforms_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
-
-/** select columns of table "games_library.platforms" */
-export enum Platforms_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Name = 'name'
-}
-
-/** input type for updating data in table "games_library.platforms" */
-export type Platforms_Set_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregate stddev on columns */
-export type Platforms_Stddev_Fields = {
-  __typename?: 'platforms_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Platforms_Stddev_Pop_Fields = {
-  __typename?: 'platforms_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Platforms_Stddev_Samp_Fields = {
-  __typename?: 'platforms_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** Streaming cursor of the table "platforms" */
-export type Platforms_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Platforms_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Platforms_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
-/** aggregate sum on columns */
-export type Platforms_Sum_Fields = {
-  __typename?: 'platforms_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "games_library.platforms" */
-export enum Platforms_Update_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Name = 'name'
-}
-
-export type Platforms_Updates = {
-  /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Platforms_Inc_Input>;
-  /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Platforms_Set_Input>;
-  /** filter the rows which have to be updated */
-  where: Platforms_Bool_Exp;
-};
-
-/** aggregate var_pop on columns */
-export type Platforms_Var_Pop_Fields = {
-  __typename?: 'platforms_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Platforms_Var_Samp_Fields = {
-  __typename?: 'platforms_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Platforms_Variance_Fields = {
-  __typename?: 'platforms_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
 export type Query_Root = {
   __typename?: 'query_root';
-  /** fetch data from the table: "games_library.devices" */
-  devices: Array<Devices>;
-  /** fetch aggregated fields from the table: "games_library.devices" */
-  devices_aggregate: Devices_Aggregate;
-  /** fetch data from the table: "games_library.devices" using primary key columns */
-  devices_by_pk?: Maybe<Devices>;
+  /** fetch data from the table: "games_library.GameClients" */
+  gameClients: Array<GameClients>;
+  /** fetch aggregated fields from the table: "games_library.GameClients" */
+  gameClients_aggregate: GameClients_Aggregate;
+  /** fetch data from the table: "games_library.GameClients" using primary key columns */
+  gameClients_by_pk?: Maybe<GameClients>;
+  /** fetch data from the table: "games_library.GameStatuses" */
+  gameStatuses: Array<GameStatuses>;
+  /** fetch aggregated fields from the table: "games_library.GameStatuses" */
+  gameStatuses_aggregate: GameStatuses_Aggregate;
+  /** fetch data from the table: "games_library.GameStatuses" using primary key columns */
+  gameStatuses_by_pk?: Maybe<GameStatuses>;
   /** An array relationship */
-  games: Array<Games>;
+  userGames: Array<UserGames>;
   /** An aggregate relationship */
-  games_aggregate: Games_Aggregate;
-  /** fetch data from the table: "games_library.games" using primary key columns */
-  games_by_pk?: Maybe<Games>;
-  /** fetch data from the table: "games_library.platforms" */
-  platforms: Array<Platforms>;
-  /** fetch aggregated fields from the table: "games_library.platforms" */
-  platforms_aggregate: Platforms_Aggregate;
-  /** fetch data from the table: "games_library.platforms" using primary key columns */
-  platforms_by_pk?: Maybe<Platforms>;
+  userGames_aggregate: UserGames_Aggregate;
+  /** fetch data from the table: "games_library.UserGames" using primary key columns */
+  userGames_by_pk?: Maybe<UserGames>;
 };
 
 
-export type Query_RootDevicesArgs = {
-  distinct_on?: InputMaybe<Array<Devices_Select_Column>>;
+export type Query_RootGameClientsArgs = {
+  distinct_on?: InputMaybe<Array<GameClients_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Devices_Order_By>>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameClients_Order_By>>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
 
-export type Query_RootDevices_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Devices_Select_Column>>;
+export type Query_RootGameClients_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<GameClients_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Devices_Order_By>>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameClients_Order_By>>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
 
-export type Query_RootDevices_By_PkArgs = {
+export type Query_RootGameClients_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-export type Query_RootGamesArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+export type Query_RootGameStatusesArgs = {
+  distinct_on?: InputMaybe<Array<GameStatuses_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameStatuses_Order_By>>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
 };
 
 
-export type Query_RootGames_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+export type Query_RootGameStatuses_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<GameStatuses_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameStatuses_Order_By>>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
 };
 
 
-export type Query_RootGames_By_PkArgs = {
-  id: Scalars['Int'];
+export type Query_RootGameStatuses_By_PkArgs = {
+  id: Scalars['String'];
 };
 
 
-export type Query_RootPlatformsArgs = {
-  distinct_on?: InputMaybe<Array<Platforms_Select_Column>>;
+export type Query_RootUserGamesArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Platforms_Order_By>>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
 
-export type Query_RootPlatforms_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Platforms_Select_Column>>;
+export type Query_RootUserGames_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Platforms_Order_By>>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
 };
 
 
-export type Query_RootPlatforms_By_PkArgs = {
+export type Query_RootUserGames_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "games_library.devices" */
-  devices: Array<Devices>;
-  /** fetch aggregated fields from the table: "games_library.devices" */
-  devices_aggregate: Devices_Aggregate;
-  /** fetch data from the table: "games_library.devices" using primary key columns */
-  devices_by_pk?: Maybe<Devices>;
-  /** fetch data from the table in a streaming manner: "games_library.devices" */
-  devices_stream: Array<Devices>;
+  /** fetch data from the table: "games_library.GameClients" */
+  gameClients: Array<GameClients>;
+  /** fetch aggregated fields from the table: "games_library.GameClients" */
+  gameClients_aggregate: GameClients_Aggregate;
+  /** fetch data from the table: "games_library.GameClients" using primary key columns */
+  gameClients_by_pk?: Maybe<GameClients>;
+  /** fetch data from the table in a streaming manner: "games_library.GameClients" */
+  gameClients_stream: Array<GameClients>;
+  /** fetch data from the table: "games_library.GameStatuses" */
+  gameStatuses: Array<GameStatuses>;
+  /** fetch aggregated fields from the table: "games_library.GameStatuses" */
+  gameStatuses_aggregate: GameStatuses_Aggregate;
+  /** fetch data from the table: "games_library.GameStatuses" using primary key columns */
+  gameStatuses_by_pk?: Maybe<GameStatuses>;
+  /** fetch data from the table in a streaming manner: "games_library.GameStatuses" */
+  gameStatuses_stream: Array<GameStatuses>;
   /** An array relationship */
-  games: Array<Games>;
+  userGames: Array<UserGames>;
   /** An aggregate relationship */
-  games_aggregate: Games_Aggregate;
-  /** fetch data from the table: "games_library.games" using primary key columns */
-  games_by_pk?: Maybe<Games>;
-  /** fetch data from the table in a streaming manner: "games_library.games" */
-  games_stream: Array<Games>;
-  /** fetch data from the table: "games_library.platforms" */
-  platforms: Array<Platforms>;
-  /** fetch aggregated fields from the table: "games_library.platforms" */
-  platforms_aggregate: Platforms_Aggregate;
-  /** fetch data from the table: "games_library.platforms" using primary key columns */
-  platforms_by_pk?: Maybe<Platforms>;
-  /** fetch data from the table in a streaming manner: "games_library.platforms" */
-  platforms_stream: Array<Platforms>;
+  userGames_aggregate: UserGames_Aggregate;
+  /** fetch data from the table: "games_library.UserGames" using primary key columns */
+  userGames_by_pk?: Maybe<UserGames>;
+  /** fetch data from the table in a streaming manner: "games_library.UserGames" */
+  userGames_stream: Array<UserGames>;
 };
 
 
-export type Subscription_RootDevicesArgs = {
-  distinct_on?: InputMaybe<Array<Devices_Select_Column>>;
+export type Subscription_RootGameClientsArgs = {
+  distinct_on?: InputMaybe<Array<GameClients_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Devices_Order_By>>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameClients_Order_By>>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
 
-export type Subscription_RootDevices_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Devices_Select_Column>>;
+export type Subscription_RootGameClients_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<GameClients_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Devices_Order_By>>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameClients_Order_By>>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
 
-export type Subscription_RootDevices_By_PkArgs = {
+export type Subscription_RootGameClients_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-export type Subscription_RootDevices_StreamArgs = {
+export type Subscription_RootGameClients_StreamArgs = {
   batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Devices_Stream_Cursor_Input>>;
-  where?: InputMaybe<Devices_Bool_Exp>;
+  cursor: Array<InputMaybe<GameClients_Stream_Cursor_Input>>;
+  where?: InputMaybe<GameClients_Bool_Exp>;
 };
 
 
-export type Subscription_RootGamesArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+export type Subscription_RootGameStatusesArgs = {
+  distinct_on?: InputMaybe<Array<GameStatuses_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameStatuses_Order_By>>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
 };
 
 
-export type Subscription_RootGames_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Games_Select_Column>>;
+export type Subscription_RootGameStatuses_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<GameStatuses_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Games_Order_By>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  order_by?: InputMaybe<Array<GameStatuses_Order_By>>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
 };
 
 
-export type Subscription_RootGames_By_PkArgs = {
+export type Subscription_RootGameStatuses_By_PkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type Subscription_RootGameStatuses_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<GameStatuses_Stream_Cursor_Input>>;
+  where?: InputMaybe<GameStatuses_Bool_Exp>;
+};
+
+
+export type Subscription_RootUserGamesArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
+};
+
+
+export type Subscription_RootUserGames_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserGames_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<UserGames_Order_By>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
+};
+
+
+export type Subscription_RootUserGames_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-export type Subscription_RootGames_StreamArgs = {
+export type Subscription_RootUserGames_StreamArgs = {
   batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Games_Stream_Cursor_Input>>;
-  where?: InputMaybe<Games_Bool_Exp>;
+  cursor: Array<InputMaybe<UserGames_Stream_Cursor_Input>>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
+};
+
+/** columns and relationships of "games_library.UserGames" */
+export type UserGames = {
+  __typename?: 'userGames';
+  assigned_at: Scalars['date'];
+  client_id?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  gameClient?: Maybe<GameClients>;
+  game_id: Scalars['Int'];
+  id: Scalars['Int'];
+  platform_id: Scalars['Int'];
+  purchase_price?: Maybe<Scalars['numeric']>;
+  status?: Maybe<GameStatuses_Enum>;
+  uuid: Scalars['uuid'];
+};
+
+/** aggregated selection of "games_library.UserGames" */
+export type UserGames_Aggregate = {
+  __typename?: 'userGames_aggregate';
+  aggregate?: Maybe<UserGames_Aggregate_Fields>;
+  nodes: Array<UserGames>;
+};
+
+export type UserGames_Aggregate_Bool_Exp = {
+  count?: InputMaybe<UserGames_Aggregate_Bool_Exp_Count>;
+};
+
+export type UserGames_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<UserGames_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<UserGames_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "games_library.UserGames" */
+export type UserGames_Aggregate_Fields = {
+  __typename?: 'userGames_aggregate_fields';
+  avg?: Maybe<UserGames_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<UserGames_Max_Fields>;
+  min?: Maybe<UserGames_Min_Fields>;
+  stddev?: Maybe<UserGames_Stddev_Fields>;
+  stddev_pop?: Maybe<UserGames_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<UserGames_Stddev_Samp_Fields>;
+  sum?: Maybe<UserGames_Sum_Fields>;
+  var_pop?: Maybe<UserGames_Var_Pop_Fields>;
+  var_samp?: Maybe<UserGames_Var_Samp_Fields>;
+  variance?: Maybe<UserGames_Variance_Fields>;
 };
 
 
-export type Subscription_RootPlatformsArgs = {
-  distinct_on?: InputMaybe<Array<Platforms_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Platforms_Order_By>>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
+/** aggregate fields of "games_library.UserGames" */
+export type UserGames_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<UserGames_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
-
-export type Subscription_RootPlatforms_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Platforms_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Platforms_Order_By>>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
+/** order by aggregate values of table "games_library.UserGames" */
+export type UserGames_Aggregate_Order_By = {
+  avg?: InputMaybe<UserGames_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<UserGames_Max_Order_By>;
+  min?: InputMaybe<UserGames_Min_Order_By>;
+  stddev?: InputMaybe<UserGames_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<UserGames_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<UserGames_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<UserGames_Sum_Order_By>;
+  var_pop?: InputMaybe<UserGames_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<UserGames_Var_Samp_Order_By>;
+  variance?: InputMaybe<UserGames_Variance_Order_By>;
 };
 
+/** input type for inserting array relation for remote table "games_library.UserGames" */
+export type UserGames_Arr_Rel_Insert_Input = {
+  data: Array<UserGames_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<UserGames_On_Conflict>;
+};
 
-export type Subscription_RootPlatforms_By_PkArgs = {
+/** aggregate avg on columns */
+export type UserGames_Avg_Fields = {
+  __typename?: 'userGames_avg_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "games_library.UserGames" */
+export type UserGames_Avg_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "games_library.UserGames". All fields are combined with a logical 'AND'. */
+export type UserGames_Bool_Exp = {
+  _and?: InputMaybe<Array<UserGames_Bool_Exp>>;
+  _not?: InputMaybe<UserGames_Bool_Exp>;
+  _or?: InputMaybe<Array<UserGames_Bool_Exp>>;
+  assigned_at?: InputMaybe<Date_Comparison_Exp>;
+  client_id?: InputMaybe<Int_Comparison_Exp>;
+  gameClient?: InputMaybe<GameClients_Bool_Exp>;
+  game_id?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  platform_id?: InputMaybe<Int_Comparison_Exp>;
+  purchase_price?: InputMaybe<Numeric_Comparison_Exp>;
+  status?: InputMaybe<GameStatuses_Enum_Comparison_Exp>;
+  uuid?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "games_library.UserGames" */
+export enum UserGames_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  UserGamesPkey = 'UserGames_pkey'
+}
+
+/** input type for incrementing numeric columns in table "games_library.UserGames" */
+export type UserGames_Inc_Input = {
+  client_id?: InputMaybe<Scalars['Int']>;
+  game_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  platform_id?: InputMaybe<Scalars['Int']>;
+  purchase_price?: InputMaybe<Scalars['numeric']>;
+};
+
+/** input type for inserting data into table "games_library.UserGames" */
+export type UserGames_Insert_Input = {
+  assigned_at?: InputMaybe<Scalars['date']>;
+  client_id?: InputMaybe<Scalars['Int']>;
+  gameClient?: InputMaybe<GameClients_Obj_Rel_Insert_Input>;
+  game_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  platform_id?: InputMaybe<Scalars['Int']>;
+  purchase_price?: InputMaybe<Scalars['numeric']>;
+  status?: InputMaybe<GameStatuses_Enum>;
+  uuid?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type UserGames_Max_Fields = {
+  __typename?: 'userGames_max_fields';
+  assigned_at?: Maybe<Scalars['date']>;
+  client_id?: Maybe<Scalars['Int']>;
+  game_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  platform_id?: Maybe<Scalars['Int']>;
+  purchase_price?: Maybe<Scalars['numeric']>;
+  uuid?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "games_library.UserGames" */
+export type UserGames_Max_Order_By = {
+  assigned_at?: InputMaybe<Order_By>;
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type UserGames_Min_Fields = {
+  __typename?: 'userGames_min_fields';
+  assigned_at?: Maybe<Scalars['date']>;
+  client_id?: Maybe<Scalars['Int']>;
+  game_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  platform_id?: Maybe<Scalars['Int']>;
+  purchase_price?: Maybe<Scalars['numeric']>;
+  uuid?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "games_library.UserGames" */
+export type UserGames_Min_Order_By = {
+  assigned_at?: InputMaybe<Order_By>;
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "games_library.UserGames" */
+export type UserGames_Mutation_Response = {
+  __typename?: 'userGames_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<UserGames>;
+};
+
+/** on_conflict condition type for table "games_library.UserGames" */
+export type UserGames_On_Conflict = {
+  constraint: UserGames_Constraint;
+  update_columns?: Array<UserGames_Update_Column>;
+  where?: InputMaybe<UserGames_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "games_library.UserGames". */
+export type UserGames_Order_By = {
+  assigned_at?: InputMaybe<Order_By>;
+  client_id?: InputMaybe<Order_By>;
+  gameClient?: InputMaybe<GameClients_Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  uuid?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: games_library.UserGames */
+export type UserGames_Pk_Columns_Input = {
   id: Scalars['Int'];
 };
 
+/** select columns of table "games_library.UserGames" */
+export enum UserGames_Select_Column {
+  /** column name */
+  AssignedAt = 'assigned_at',
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  GameId = 'game_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  PlatformId = 'platform_id',
+  /** column name */
+  PurchasePrice = 'purchase_price',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  Uuid = 'uuid'
+}
 
-export type Subscription_RootPlatforms_StreamArgs = {
-  batch_size: Scalars['Int'];
-  cursor: Array<InputMaybe<Platforms_Stream_Cursor_Input>>;
-  where?: InputMaybe<Platforms_Bool_Exp>;
+/** input type for updating data in table "games_library.UserGames" */
+export type UserGames_Set_Input = {
+  assigned_at?: InputMaybe<Scalars['date']>;
+  client_id?: InputMaybe<Scalars['Int']>;
+  game_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  platform_id?: InputMaybe<Scalars['Int']>;
+  purchase_price?: InputMaybe<Scalars['numeric']>;
+  status?: InputMaybe<GameStatuses_Enum>;
+  uuid?: InputMaybe<Scalars['uuid']>;
 };
 
-/** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
-export type Timestamptz_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['timestamptz']>;
-  _gt?: InputMaybe<Scalars['timestamptz']>;
-  _gte?: InputMaybe<Scalars['timestamptz']>;
-  _in?: InputMaybe<Array<Scalars['timestamptz']>>;
+/** aggregate stddev on columns */
+export type UserGames_Stddev_Fields = {
+  __typename?: 'userGames_stddev_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "games_library.UserGames" */
+export type UserGames_Stddev_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type UserGames_Stddev_Pop_Fields = {
+  __typename?: 'userGames_stddev_pop_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "games_library.UserGames" */
+export type UserGames_Stddev_Pop_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type UserGames_Stddev_Samp_Fields = {
+  __typename?: 'userGames_stddev_samp_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "games_library.UserGames" */
+export type UserGames_Stddev_Samp_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "userGames" */
+export type UserGames_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: UserGames_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type UserGames_Stream_Cursor_Value_Input = {
+  assigned_at?: InputMaybe<Scalars['date']>;
+  client_id?: InputMaybe<Scalars['Int']>;
+  game_id?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  platform_id?: InputMaybe<Scalars['Int']>;
+  purchase_price?: InputMaybe<Scalars['numeric']>;
+  status?: InputMaybe<GameStatuses_Enum>;
+  uuid?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate sum on columns */
+export type UserGames_Sum_Fields = {
+  __typename?: 'userGames_sum_fields';
+  client_id?: Maybe<Scalars['Int']>;
+  game_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  platform_id?: Maybe<Scalars['Int']>;
+  purchase_price?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "games_library.UserGames" */
+export type UserGames_Sum_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "games_library.UserGames" */
+export enum UserGames_Update_Column {
+  /** column name */
+  AssignedAt = 'assigned_at',
+  /** column name */
+  ClientId = 'client_id',
+  /** column name */
+  GameId = 'game_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  PlatformId = 'platform_id',
+  /** column name */
+  PurchasePrice = 'purchase_price',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  Uuid = 'uuid'
+}
+
+export type UserGames_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<UserGames_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<UserGames_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: UserGames_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type UserGames_Var_Pop_Fields = {
+  __typename?: 'userGames_var_pop_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "games_library.UserGames" */
+export type UserGames_Var_Pop_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type UserGames_Var_Samp_Fields = {
+  __typename?: 'userGames_var_samp_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "games_library.UserGames" */
+export type UserGames_Var_Samp_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type UserGames_Variance_Fields = {
+  __typename?: 'userGames_variance_fields';
+  client_id?: Maybe<Scalars['Float']>;
+  game_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  platform_id?: Maybe<Scalars['Float']>;
+  purchase_price?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "games_library.UserGames" */
+export type UserGames_Variance_Order_By = {
+  client_id?: InputMaybe<Order_By>;
+  game_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  platform_id?: InputMaybe<Order_By>;
+  purchase_price?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
+export type Uuid_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['uuid']>;
+  _gt?: InputMaybe<Scalars['uuid']>;
+  _gte?: InputMaybe<Scalars['uuid']>;
+  _in?: InputMaybe<Array<Scalars['uuid']>>;
   _is_null?: InputMaybe<Scalars['Boolean']>;
-  _lt?: InputMaybe<Scalars['timestamptz']>;
-  _lte?: InputMaybe<Scalars['timestamptz']>;
-  _neq?: InputMaybe<Scalars['timestamptz']>;
-  _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
+  _lt?: InputMaybe<Scalars['uuid']>;
+  _lte?: InputMaybe<Scalars['uuid']>;
+  _neq?: InputMaybe<Scalars['uuid']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
 export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQuery = { __typename?: 'query_root', games: Array<{ __typename?: 'games', id: number, title: string }> };
+export type HomePageQuery = { __typename?: 'query_root', userGames: Array<{ __typename?: 'userGames', id: number, uuid: any, game_id: number, status?: GameStatuses_Enum | null }> };
+
+export type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AboutPageQuery = { __typename?: 'query_root', gameClients: Array<{ __typename?: 'gameClients', uuid: any, id: number, name: string }> };
 
 
 export const HomePageDocument = gql`
     query HomePage {
-  games {
+  userGames {
     id
-    title
+    uuid
+    game_id
+    status
   }
 }
     `;
@@ -1477,3 +1418,39 @@ export function useHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<H
 export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
 export type HomePageLazyQueryHookResult = ReturnType<typeof useHomePageLazyQuery>;
 export type HomePageQueryResult = Apollo.QueryResult<HomePageQuery, HomePageQueryVariables>;
+export const AboutPageDocument = gql`
+    query AboutPage {
+  gameClients {
+    uuid
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useAboutPageQuery__
+ *
+ * To run a query within a React component, call `useAboutPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAboutPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAboutPageQuery(baseOptions?: Apollo.QueryHookOptions<AboutPageQuery, AboutPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AboutPageQuery, AboutPageQueryVariables>(AboutPageDocument, options);
+      }
+export function useAboutPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AboutPageQuery, AboutPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AboutPageQuery, AboutPageQueryVariables>(AboutPageDocument, options);
+        }
+export type AboutPageQueryHookResult = ReturnType<typeof useAboutPageQuery>;
+export type AboutPageLazyQueryHookResult = ReturnType<typeof useAboutPageLazyQuery>;
+export type AboutPageQueryResult = Apollo.QueryResult<AboutPageQuery, AboutPageQueryVariables>;

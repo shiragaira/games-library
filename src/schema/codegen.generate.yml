@@ -9,7 +9,7 @@ generates:
     plugins:
       - typescript
       - typescript-operations
-      - typescript-react-apollo
+      - typescript-react-instances
     config:
       withHooks: true
       dedupeOperationSuffix: true

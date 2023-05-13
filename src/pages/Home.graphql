@@ -1,6 +1,8 @@
 query HomePage {
-    games {
+    userGames {
         id
-        title
+        uuid
+        game_id
+        status
     }
 }

@@ -1,8 +1,11 @@
 import { HomePageDocument, HomePageQuery } from '@/schema/api'
 import { useHomePageQueryCache } from '@/schema/api/cache'
-import { getPageData } from '@/utils/getPageData'
+import { getDataFromServer } from '@/utils/getDataFromServer'
+import { addApolloState, initializeApollo } from '@/instances/apollo.instance'
+import Link from 'next/link'
 
-export default function Home() {
+export default function Home(props) {
+  console.log('Home props', props)
   return (
     <div>
       <h1>HOME</h1>
@@ -11,5 +14,5 @@ export default function Home() {
 }
 
 export function getStaticProps() {
-  return getPageData<HomePageQuery>({ query: HomePageDocument })
+  return getDataFromServer({ query: HomePageDocument })
 }

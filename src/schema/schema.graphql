@@ -108,989 +108,696 @@ input date_comparison_exp {
 }
 
 """
-columns and relationships of "games_library.devices"
+columns and relationships of "games_library.GameClients"
 """
-type devices {
-  """An array relationship"""
-  games(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): [games!]!
-
-  """An aggregate relationship"""
-  games_aggregate(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): games_aggregate!
+type gameClients {
   id: Int!
   name: String!
+
+  """An array relationship"""
+  userGames(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): [userGames!]!
+
+  """An aggregate relationship"""
+  userGames_aggregate(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): userGames_aggregate!
+  uuid: uuid!
 }
 
 """
-aggregated selection of "games_library.devices"
+aggregated selection of "games_library.GameClients"
 """
-type devices_aggregate {
-  aggregate: devices_aggregate_fields
-  nodes: [devices!]!
+type gameClients_aggregate {
+  aggregate: gameClients_aggregate_fields
+  nodes: [gameClients!]!
 }
 
 """
-aggregate fields of "games_library.devices"
+aggregate fields of "games_library.GameClients"
 """
-type devices_aggregate_fields {
-  avg: devices_avg_fields
-  count(columns: [devices_select_column!], distinct: Boolean): Int!
-  max: devices_max_fields
-  min: devices_min_fields
-  stddev: devices_stddev_fields
-  stddev_pop: devices_stddev_pop_fields
-  stddev_samp: devices_stddev_samp_fields
-  sum: devices_sum_fields
-  var_pop: devices_var_pop_fields
-  var_samp: devices_var_samp_fields
-  variance: devices_variance_fields
+type gameClients_aggregate_fields {
+  avg: gameClients_avg_fields
+  count(columns: [gameClients_select_column!], distinct: Boolean): Int!
+  max: gameClients_max_fields
+  min: gameClients_min_fields
+  stddev: gameClients_stddev_fields
+  stddev_pop: gameClients_stddev_pop_fields
+  stddev_samp: gameClients_stddev_samp_fields
+  sum: gameClients_sum_fields
+  var_pop: gameClients_var_pop_fields
+  var_samp: gameClients_var_samp_fields
+  variance: gameClients_variance_fields
 }
 
 """aggregate avg on columns"""
-type devices_avg_fields {
+type gameClients_avg_fields {
   id: Float
 }
 
 """
-Boolean expression to filter rows from the table "games_library.devices". All fields are combined with a logical 'AND'.
+Boolean expression to filter rows from the table "games_library.GameClients". All fields are combined with a logical 'AND'.
 """
-input devices_bool_exp {
-  _and: [devices_bool_exp!]
-  _not: devices_bool_exp
-  _or: [devices_bool_exp!]
-  games: games_bool_exp
-  games_aggregate: games_aggregate_bool_exp
+input gameClients_bool_exp {
+  _and: [gameClients_bool_exp!]
+  _not: gameClients_bool_exp
+  _or: [gameClients_bool_exp!]
   id: Int_comparison_exp
   name: String_comparison_exp
+  userGames: userGames_bool_exp
+  userGames_aggregate: userGames_aggregate_bool_exp
+  uuid: uuid_comparison_exp
 }
 
 """
-unique or primary key constraints on table "games_library.devices"
+unique or primary key constraints on table "games_library.GameClients"
 """
-enum devices_constraint {
-  """
-  unique or primary key constraint on columns "name"
-  """
-  systems_name_key
-
+enum gameClients_constraint {
   """
   unique or primary key constraint on columns "id"
   """
-  systems_pkey
+  GameClients_pkey
 }
 
 """
-input type for incrementing numeric columns in table "games_library.devices"
+input type for incrementing numeric columns in table "games_library.GameClients"
 """
-input devices_inc_input {
+input gameClients_inc_input {
   id: Int
 }
 
 """
-input type for inserting data into table "games_library.devices"
+input type for inserting data into table "games_library.GameClients"
 """
-input devices_insert_input {
-  games: games_arr_rel_insert_input
+input gameClients_insert_input {
   id: Int
   name: String
+  userGames: userGames_arr_rel_insert_input
+  uuid: uuid
 }
 
 """aggregate max on columns"""
-type devices_max_fields {
+type gameClients_max_fields {
   id: Int
   name: String
+  uuid: uuid
 }
 
 """aggregate min on columns"""
-type devices_min_fields {
+type gameClients_min_fields {
   id: Int
   name: String
+  uuid: uuid
 }
 
 """
-response of any mutation on the table "games_library.devices"
+response of any mutation on the table "games_library.GameClients"
 """
-type devices_mutation_response {
+type gameClients_mutation_response {
   """number of rows affected by the mutation"""
   affected_rows: Int!
 
   """data from the rows affected by the mutation"""
-  returning: [devices!]!
+  returning: [gameClients!]!
 }
 
 """
-input type for inserting object relation for remote table "games_library.devices"
+input type for inserting object relation for remote table "games_library.GameClients"
 """
-input devices_obj_rel_insert_input {
-  data: devices_insert_input!
+input gameClients_obj_rel_insert_input {
+  data: gameClients_insert_input!
 
   """upsert condition"""
-  on_conflict: devices_on_conflict
+  on_conflict: gameClients_on_conflict
 }
 
 """
-on_conflict condition type for table "games_library.devices"
+on_conflict condition type for table "games_library.GameClients"
 """
-input devices_on_conflict {
-  constraint: devices_constraint!
-  update_columns: [devices_update_column!]! = []
-  where: devices_bool_exp
+input gameClients_on_conflict {
+  constraint: gameClients_constraint!
+  update_columns: [gameClients_update_column!]! = []
+  where: gameClients_bool_exp
 }
 
-"""Ordering options when selecting data from "games_library.devices"."""
-input devices_order_by {
-  games_aggregate: games_aggregate_order_by
+"""Ordering options when selecting data from "games_library.GameClients"."""
+input gameClients_order_by {
   id: order_by
   name: order_by
+  userGames_aggregate: userGames_aggregate_order_by
+  uuid: order_by
 }
 
-"""primary key columns input for table: games_library.devices"""
-input devices_pk_columns_input {
+"""primary key columns input for table: games_library.GameClients"""
+input gameClients_pk_columns_input {
   id: Int!
 }
 
 """
-select columns of table "games_library.devices"
+select columns of table "games_library.GameClients"
 """
-enum devices_select_column {
+enum gameClients_select_column {
   """column name"""
   id
 
   """column name"""
   name
+
+  """column name"""
+  uuid
 }
 
 """
-input type for updating data in table "games_library.devices"
+input type for updating data in table "games_library.GameClients"
 """
-input devices_set_input {
+input gameClients_set_input {
   id: Int
   name: String
+  uuid: uuid
 }
 
 """aggregate stddev on columns"""
-type devices_stddev_fields {
+type gameClients_stddev_fields {
   id: Float
 }
 
 """aggregate stddev_pop on columns"""
-type devices_stddev_pop_fields {
+type gameClients_stddev_pop_fields {
   id: Float
 }
 
 """aggregate stddev_samp on columns"""
-type devices_stddev_samp_fields {
+type gameClients_stddev_samp_fields {
   id: Float
 }
 
 """
-Streaming cursor of the table "devices"
+Streaming cursor of the table "gameClients"
 """
-input devices_stream_cursor_input {
+input gameClients_stream_cursor_input {
   """Stream column input with initial value"""
-  initial_value: devices_stream_cursor_value_input!
+  initial_value: gameClients_stream_cursor_value_input!
 
   """cursor ordering"""
   ordering: cursor_ordering
 }
 
 """Initial value of the column from where the streaming should start"""
-input devices_stream_cursor_value_input {
+input gameClients_stream_cursor_value_input {
   id: Int
   name: String
+  uuid: uuid
 }
 
 """aggregate sum on columns"""
-type devices_sum_fields {
+type gameClients_sum_fields {
   id: Int
 }
 
 """
-update columns of table "games_library.devices"
+update columns of table "games_library.GameClients"
 """
-enum devices_update_column {
+enum gameClients_update_column {
   """column name"""
   id
 
   """column name"""
   name
+
+  """column name"""
+  uuid
 }
 
-input devices_updates {
+input gameClients_updates {
   """increments the numeric columns with given value of the filtered values"""
-  _inc: devices_inc_input
+  _inc: gameClients_inc_input
 
   """sets the columns of the filtered rows to the given values"""
-  _set: devices_set_input
+  _set: gameClients_set_input
 
   """filter the rows which have to be updated"""
-  where: devices_bool_exp!
+  where: gameClients_bool_exp!
 }
 
 """aggregate var_pop on columns"""
-type devices_var_pop_fields {
+type gameClients_var_pop_fields {
   id: Float
 }
 
 """aggregate var_samp on columns"""
-type devices_var_samp_fields {
+type gameClients_var_samp_fields {
   id: Float
 }
 
 """aggregate variance on columns"""
-type devices_variance_fields {
+type gameClients_variance_fields {
   id: Float
 }
 
 """
-columns and relationships of "games_library.games"
+columns and relationships of "games_library.GameStatuses"
 """
-type games {
-  cover_image_url: String
-  created_at: timestamptz!
+type gameStatuses {
+  id: String!
 
-  """An object relationship"""
-  device: devices
-  device_id: Int
-  id: Int!
+  """An array relationship"""
+  userGames(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
 
-  """An object relationship"""
-  platform: platforms
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String!
-  updated_at: timestamptz!
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): [userGames!]!
+
+  """An aggregate relationship"""
+  userGames_aggregate(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): userGames_aggregate!
 }
 
 """
-aggregated selection of "games_library.games"
+aggregated selection of "games_library.GameStatuses"
 """
-type games_aggregate {
-  aggregate: games_aggregate_fields
-  nodes: [games!]!
-}
-
-input games_aggregate_bool_exp {
-  count: games_aggregate_bool_exp_count
-}
-
-input games_aggregate_bool_exp_count {
-  arguments: [games_select_column!]
-  distinct: Boolean
-  filter: games_bool_exp
-  predicate: Int_comparison_exp!
+type gameStatuses_aggregate {
+  aggregate: gameStatuses_aggregate_fields
+  nodes: [gameStatuses!]!
 }
 
 """
-aggregate fields of "games_library.games"
+aggregate fields of "games_library.GameStatuses"
 """
-type games_aggregate_fields {
-  avg: games_avg_fields
-  count(columns: [games_select_column!], distinct: Boolean): Int!
-  max: games_max_fields
-  min: games_min_fields
-  stddev: games_stddev_fields
-  stddev_pop: games_stddev_pop_fields
-  stddev_samp: games_stddev_samp_fields
-  sum: games_sum_fields
-  var_pop: games_var_pop_fields
-  var_samp: games_var_samp_fields
-  variance: games_variance_fields
+type gameStatuses_aggregate_fields {
+  count(columns: [gameStatuses_select_column!], distinct: Boolean): Int!
+  max: gameStatuses_max_fields
+  min: gameStatuses_min_fields
 }
 
 """
-order by aggregate values of table "games_library.games"
+Boolean expression to filter rows from the table "games_library.GameStatuses". All fields are combined with a logical 'AND'.
 """
-input games_aggregate_order_by {
-  avg: games_avg_order_by
-  count: order_by
-  max: games_max_order_by
-  min: games_min_order_by
-  stddev: games_stddev_order_by
-  stddev_pop: games_stddev_pop_order_by
-  stddev_samp: games_stddev_samp_order_by
-  sum: games_sum_order_by
-  var_pop: games_var_pop_order_by
-  var_samp: games_var_samp_order_by
-  variance: games_variance_order_by
+input gameStatuses_bool_exp {
+  _and: [gameStatuses_bool_exp!]
+  _not: gameStatuses_bool_exp
+  _or: [gameStatuses_bool_exp!]
+  id: String_comparison_exp
+  userGames: userGames_bool_exp
+  userGames_aggregate: userGames_aggregate_bool_exp
 }
 
 """
-input type for inserting array relation for remote table "games_library.games"
+unique or primary key constraints on table "games_library.GameStatuses"
 """
-input games_arr_rel_insert_input {
-  data: [games_insert_input!]!
-
-  """upsert condition"""
-  on_conflict: games_on_conflict
-}
-
-"""aggregate avg on columns"""
-type games_avg_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by avg() on columns of table "games_library.games"
-"""
-input games_avg_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""
-Boolean expression to filter rows from the table "games_library.games". All fields are combined with a logical 'AND'.
-"""
-input games_bool_exp {
-  _and: [games_bool_exp!]
-  _not: games_bool_exp
-  _or: [games_bool_exp!]
-  cover_image_url: String_comparison_exp
-  created_at: timestamptz_comparison_exp
-  device: devices_bool_exp
-  device_id: Int_comparison_exp
-  id: Int_comparison_exp
-  platform: platforms_bool_exp
-  platform_id: Int_comparison_exp
-  purchase_date: date_comparison_exp
-  purchase_price: money_comparison_exp
-  title: String_comparison_exp
-  updated_at: timestamptz_comparison_exp
-}
-
-"""
-unique or primary key constraints on table "games_library.games"
-"""
-enum games_constraint {
+enum gameStatuses_constraint {
   """
   unique or primary key constraint on columns "id"
   """
-  games_pkey
+  GameStatuses_pkey
+}
+
+enum gameStatuses_enum {
+  abadoned
+  backlog
+  completed
+  in_progress
 }
 
 """
-input type for incrementing numeric columns in table "games_library.games"
+Boolean expression to compare columns of type "gameStatuses_enum". All fields are combined with logical 'AND'.
 """
-input games_inc_input {
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_price: money
+input gameStatuses_enum_comparison_exp {
+  _eq: gameStatuses_enum
+  _in: [gameStatuses_enum!]
+  _is_null: Boolean
+  _neq: gameStatuses_enum
+  _nin: [gameStatuses_enum!]
 }
 
 """
-input type for inserting data into table "games_library.games"
+input type for inserting data into table "games_library.GameStatuses"
 """
-input games_insert_input {
-  cover_image_url: String
-  created_at: timestamptz
-  device: devices_obj_rel_insert_input
-  device_id: Int
-  id: Int
-  platform: platforms_obj_rel_insert_input
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String
-  updated_at: timestamptz
+input gameStatuses_insert_input {
+  id: String
+  userGames: userGames_arr_rel_insert_input
 }
 
 """aggregate max on columns"""
-type games_max_fields {
-  cover_image_url: String
-  created_at: timestamptz
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String
-  updated_at: timestamptz
-}
-
-"""
-order by max() on columns of table "games_library.games"
-"""
-input games_max_order_by {
-  cover_image_url: order_by
-  created_at: order_by
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_date: order_by
-  purchase_price: order_by
-  title: order_by
-  updated_at: order_by
+type gameStatuses_max_fields {
+  id: String
 }
 
 """aggregate min on columns"""
-type games_min_fields {
-  cover_image_url: String
-  created_at: timestamptz
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String
-  updated_at: timestamptz
+type gameStatuses_min_fields {
+  id: String
 }
 
 """
-order by min() on columns of table "games_library.games"
+response of any mutation on the table "games_library.GameStatuses"
 """
-input games_min_order_by {
-  cover_image_url: order_by
-  created_at: order_by
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_date: order_by
-  purchase_price: order_by
-  title: order_by
-  updated_at: order_by
-}
-
-"""
-response of any mutation on the table "games_library.games"
-"""
-type games_mutation_response {
+type gameStatuses_mutation_response {
   """number of rows affected by the mutation"""
   affected_rows: Int!
 
   """data from the rows affected by the mutation"""
-  returning: [games!]!
+  returning: [gameStatuses!]!
 }
 
 """
-on_conflict condition type for table "games_library.games"
+on_conflict condition type for table "games_library.GameStatuses"
 """
-input games_on_conflict {
-  constraint: games_constraint!
-  update_columns: [games_update_column!]! = []
-  where: games_bool_exp
+input gameStatuses_on_conflict {
+  constraint: gameStatuses_constraint!
+  update_columns: [gameStatuses_update_column!]! = []
+  where: gameStatuses_bool_exp
 }
 
-"""Ordering options when selecting data from "games_library.games"."""
-input games_order_by {
-  cover_image_url: order_by
-  created_at: order_by
-  device: devices_order_by
-  device_id: order_by
+"""
+Ordering options when selecting data from "games_library.GameStatuses".
+"""
+input gameStatuses_order_by {
   id: order_by
-  platform: platforms_order_by
-  platform_id: order_by
-  purchase_date: order_by
-  purchase_price: order_by
-  title: order_by
-  updated_at: order_by
+  userGames_aggregate: userGames_aggregate_order_by
 }
 
-"""primary key columns input for table: games_library.games"""
-input games_pk_columns_input {
-  id: Int!
+"""primary key columns input for table: games_library.GameStatuses"""
+input gameStatuses_pk_columns_input {
+  id: String!
 }
 
 """
-select columns of table "games_library.games"
+select columns of table "games_library.GameStatuses"
 """
-enum games_select_column {
-  """column name"""
-  cover_image_url
-
-  """column name"""
-  created_at
-
-  """column name"""
-  device_id
-
+enum gameStatuses_select_column {
   """column name"""
   id
-
-  """column name"""
-  platform_id
-
-  """column name"""
-  purchase_date
-
-  """column name"""
-  purchase_price
-
-  """column name"""
-  title
-
-  """column name"""
-  updated_at
 }
 
 """
-input type for updating data in table "games_library.games"
+input type for updating data in table "games_library.GameStatuses"
 """
-input games_set_input {
-  cover_image_url: String
-  created_at: timestamptz
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String
-  updated_at: timestamptz
-}
-
-"""aggregate stddev on columns"""
-type games_stddev_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
+input gameStatuses_set_input {
+  id: String
 }
 
 """
-order by stddev() on columns of table "games_library.games"
+Streaming cursor of the table "gameStatuses"
 """
-input games_stddev_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""aggregate stddev_pop on columns"""
-type games_stddev_pop_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by stddev_pop() on columns of table "games_library.games"
-"""
-input games_stddev_pop_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""aggregate stddev_samp on columns"""
-type games_stddev_samp_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by stddev_samp() on columns of table "games_library.games"
-"""
-input games_stddev_samp_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""
-Streaming cursor of the table "games"
-"""
-input games_stream_cursor_input {
+input gameStatuses_stream_cursor_input {
   """Stream column input with initial value"""
-  initial_value: games_stream_cursor_value_input!
+  initial_value: gameStatuses_stream_cursor_value_input!
 
   """cursor ordering"""
   ordering: cursor_ordering
 }
 
 """Initial value of the column from where the streaming should start"""
-input games_stream_cursor_value_input {
-  cover_image_url: String
-  created_at: timestamptz
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_date: date
-  purchase_price: money
-  title: String
-  updated_at: timestamptz
-}
-
-"""aggregate sum on columns"""
-type games_sum_fields {
-  device_id: Int
-  id: Int
-  platform_id: Int
-  purchase_price: money
+input gameStatuses_stream_cursor_value_input {
+  id: String
 }
 
 """
-order by sum() on columns of table "games_library.games"
+update columns of table "games_library.GameStatuses"
 """
-input games_sum_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""
-update columns of table "games_library.games"
-"""
-enum games_update_column {
-  """column name"""
-  cover_image_url
-
-  """column name"""
-  created_at
-
-  """column name"""
-  device_id
-
+enum gameStatuses_update_column {
   """column name"""
   id
-
-  """column name"""
-  platform_id
-
-  """column name"""
-  purchase_date
-
-  """column name"""
-  purchase_price
-
-  """column name"""
-  title
-
-  """column name"""
-  updated_at
 }
 
-input games_updates {
-  """increments the numeric columns with given value of the filtered values"""
-  _inc: games_inc_input
-
+input gameStatuses_updates {
   """sets the columns of the filtered rows to the given values"""
-  _set: games_set_input
+  _set: gameStatuses_set_input
 
   """filter the rows which have to be updated"""
-  where: games_bool_exp!
-}
-
-"""aggregate var_pop on columns"""
-type games_var_pop_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by var_pop() on columns of table "games_library.games"
-"""
-input games_var_pop_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""aggregate var_samp on columns"""
-type games_var_samp_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by var_samp() on columns of table "games_library.games"
-"""
-input games_var_samp_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-"""aggregate variance on columns"""
-type games_variance_fields {
-  device_id: Float
-  id: Float
-  platform_id: Float
-  purchase_price: Float
-}
-
-"""
-order by variance() on columns of table "games_library.games"
-"""
-input games_variance_order_by {
-  device_id: order_by
-  id: order_by
-  platform_id: order_by
-  purchase_price: order_by
-}
-
-scalar money
-
-"""
-Boolean expression to compare columns of type "money". All fields are combined with logical 'AND'.
-"""
-input money_comparison_exp {
-  _eq: money
-  _gt: money
-  _gte: money
-  _in: [money!]
-  _is_null: Boolean
-  _lt: money
-  _lte: money
-  _neq: money
-  _nin: [money!]
+  where: gameStatuses_bool_exp!
 }
 
 """mutation root"""
 type mutation_root {
   """
-  delete data from the table: "games_library.devices"
+  delete data from the table: "games_library.GameClients"
   """
-  delete_devices(
+  delete_gameClients(
     """filter the rows which have to be deleted"""
-    where: devices_bool_exp!
-  ): devices_mutation_response
+    where: gameClients_bool_exp!
+  ): gameClients_mutation_response
 
   """
-  delete single row from the table: "games_library.devices"
+  delete single row from the table: "games_library.GameClients"
   """
-  delete_devices_by_pk(id: Int!): devices
+  delete_gameClients_by_pk(id: Int!): gameClients
 
   """
-  delete data from the table: "games_library.games"
+  delete data from the table: "games_library.GameStatuses"
   """
-  delete_games(
+  delete_gameStatuses(
     """filter the rows which have to be deleted"""
-    where: games_bool_exp!
-  ): games_mutation_response
+    where: gameStatuses_bool_exp!
+  ): gameStatuses_mutation_response
 
   """
-  delete single row from the table: "games_library.games"
+  delete single row from the table: "games_library.GameStatuses"
   """
-  delete_games_by_pk(id: Int!): games
+  delete_gameStatuses_by_pk(id: String!): gameStatuses
 
   """
-  delete data from the table: "games_library.platforms"
+  delete data from the table: "games_library.UserGames"
   """
-  delete_platforms(
+  delete_userGames(
     """filter the rows which have to be deleted"""
-    where: platforms_bool_exp!
-  ): platforms_mutation_response
+    where: userGames_bool_exp!
+  ): userGames_mutation_response
 
   """
-  delete single row from the table: "games_library.platforms"
+  delete single row from the table: "games_library.UserGames"
   """
-  delete_platforms_by_pk(id: Int!): platforms
+  delete_userGames_by_pk(id: Int!): userGames
 
   """
-  insert data into the table: "games_library.devices"
+  insert data into the table: "games_library.GameClients"
   """
-  insert_devices(
+  insert_gameClients(
     """the rows to be inserted"""
-    objects: [devices_insert_input!]!
+    objects: [gameClients_insert_input!]!
 
     """upsert condition"""
-    on_conflict: devices_on_conflict
-  ): devices_mutation_response
+    on_conflict: gameClients_on_conflict
+  ): gameClients_mutation_response
 
   """
-  insert a single row into the table: "games_library.devices"
+  insert a single row into the table: "games_library.GameClients"
   """
-  insert_devices_one(
+  insert_gameClients_one(
     """the row to be inserted"""
-    object: devices_insert_input!
+    object: gameClients_insert_input!
 
     """upsert condition"""
-    on_conflict: devices_on_conflict
-  ): devices
+    on_conflict: gameClients_on_conflict
+  ): gameClients
 
   """
-  insert data into the table: "games_library.games"
+  insert data into the table: "games_library.GameStatuses"
   """
-  insert_games(
+  insert_gameStatuses(
     """the rows to be inserted"""
-    objects: [games_insert_input!]!
+    objects: [gameStatuses_insert_input!]!
 
     """upsert condition"""
-    on_conflict: games_on_conflict
-  ): games_mutation_response
+    on_conflict: gameStatuses_on_conflict
+  ): gameStatuses_mutation_response
 
   """
-  insert a single row into the table: "games_library.games"
+  insert a single row into the table: "games_library.GameStatuses"
   """
-  insert_games_one(
+  insert_gameStatuses_one(
     """the row to be inserted"""
-    object: games_insert_input!
+    object: gameStatuses_insert_input!
 
     """upsert condition"""
-    on_conflict: games_on_conflict
-  ): games
+    on_conflict: gameStatuses_on_conflict
+  ): gameStatuses
 
   """
-  insert data into the table: "games_library.platforms"
+  insert data into the table: "games_library.UserGames"
   """
-  insert_platforms(
+  insert_userGames(
     """the rows to be inserted"""
-    objects: [platforms_insert_input!]!
+    objects: [userGames_insert_input!]!
 
     """upsert condition"""
-    on_conflict: platforms_on_conflict
-  ): platforms_mutation_response
+    on_conflict: userGames_on_conflict
+  ): userGames_mutation_response
 
   """
-  insert a single row into the table: "games_library.platforms"
+  insert a single row into the table: "games_library.UserGames"
   """
-  insert_platforms_one(
+  insert_userGames_one(
     """the row to be inserted"""
-    object: platforms_insert_input!
+    object: userGames_insert_input!
 
     """upsert condition"""
-    on_conflict: platforms_on_conflict
-  ): platforms
+    on_conflict: userGames_on_conflict
+  ): userGames
 
   """
-  update data of the table: "games_library.devices"
+  update data of the table: "games_library.GameClients"
   """
-  update_devices(
+  update_gameClients(
     """increments the numeric columns with given value of the filtered values"""
-    _inc: devices_inc_input
+    _inc: gameClients_inc_input
 
     """sets the columns of the filtered rows to the given values"""
-    _set: devices_set_input
+    _set: gameClients_set_input
 
     """filter the rows which have to be updated"""
-    where: devices_bool_exp!
-  ): devices_mutation_response
+    where: gameClients_bool_exp!
+  ): gameClients_mutation_response
 
   """
-  update single row of the table: "games_library.devices"
+  update single row of the table: "games_library.GameClients"
   """
-  update_devices_by_pk(
+  update_gameClients_by_pk(
     """increments the numeric columns with given value of the filtered values"""
-    _inc: devices_inc_input
+    _inc: gameClients_inc_input
 
     """sets the columns of the filtered rows to the given values"""
-    _set: devices_set_input
-    pk_columns: devices_pk_columns_input!
-  ): devices
+    _set: gameClients_set_input
+    pk_columns: gameClients_pk_columns_input!
+  ): gameClients
 
   """
-  update multiples rows of table: "games_library.devices"
+  update multiples rows of table: "games_library.GameClients"
   """
-  update_devices_many(
+  update_gameClients_many(
     """updates to execute, in order"""
-    updates: [devices_updates!]!
-  ): [devices_mutation_response]
+    updates: [gameClients_updates!]!
+  ): [gameClients_mutation_response]
 
   """
-  update data of the table: "games_library.games"
+  update data of the table: "games_library.GameStatuses"
   """
-  update_games(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: games_inc_input
-
+  update_gameStatuses(
     """sets the columns of the filtered rows to the given values"""
-    _set: games_set_input
+    _set: gameStatuses_set_input
 
     """filter the rows which have to be updated"""
-    where: games_bool_exp!
-  ): games_mutation_response
+    where: gameStatuses_bool_exp!
+  ): gameStatuses_mutation_response
 
   """
-  update single row of the table: "games_library.games"
+  update single row of the table: "games_library.GameStatuses"
   """
-  update_games_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: games_inc_input
-
+  update_gameStatuses_by_pk(
     """sets the columns of the filtered rows to the given values"""
-    _set: games_set_input
-    pk_columns: games_pk_columns_input!
-  ): games
+    _set: gameStatuses_set_input
+    pk_columns: gameStatuses_pk_columns_input!
+  ): gameStatuses
 
   """
-  update multiples rows of table: "games_library.games"
+  update multiples rows of table: "games_library.GameStatuses"
   """
-  update_games_many(
+  update_gameStatuses_many(
     """updates to execute, in order"""
-    updates: [games_updates!]!
-  ): [games_mutation_response]
+    updates: [gameStatuses_updates!]!
+  ): [gameStatuses_mutation_response]
 
   """
-  update data of the table: "games_library.platforms"
+  update data of the table: "games_library.UserGames"
   """
-  update_platforms(
+  update_userGames(
     """increments the numeric columns with given value of the filtered values"""
-    _inc: platforms_inc_input
+    _inc: userGames_inc_input
 
     """sets the columns of the filtered rows to the given values"""
-    _set: platforms_set_input
+    _set: userGames_set_input
 
     """filter the rows which have to be updated"""
-    where: platforms_bool_exp!
-  ): platforms_mutation_response
+    where: userGames_bool_exp!
+  ): userGames_mutation_response
 
   """
-  update single row of the table: "games_library.platforms"
+  update single row of the table: "games_library.UserGames"
   """
-  update_platforms_by_pk(
+  update_userGames_by_pk(
     """increments the numeric columns with given value of the filtered values"""
-    _inc: platforms_inc_input
+    _inc: userGames_inc_input
 
     """sets the columns of the filtered rows to the given values"""
-    _set: platforms_set_input
-    pk_columns: platforms_pk_columns_input!
-  ): platforms
+    _set: userGames_set_input
+    pk_columns: userGames_pk_columns_input!
+  ): userGames
 
   """
-  update multiples rows of table: "games_library.platforms"
+  update multiples rows of table: "games_library.UserGames"
   """
-  update_platforms_many(
+  update_userGames_many(
     """updates to execute, in order"""
-    updates: [platforms_updates!]!
-  ): [platforms_mutation_response]
+    updates: [userGames_updates!]!
+  ): [userGames_mutation_response]
+}
+
+scalar numeric
+
+"""
+Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'.
+"""
+input numeric_comparison_exp {
+  _eq: numeric
+  _gt: numeric
+  _gte: numeric
+  _in: [numeric!]
+  _is_null: Boolean
+  _lt: numeric
+  _lte: numeric
+  _neq: numeric
+  _nin: [numeric!]
 }
 
 """column ordering options"""
@@ -1114,14 +821,13 @@ enum order_by {
   desc_nulls_last
 }
 
-"""
-columns and relationships of "games_library.platforms"
-"""
-type platforms {
-  """An array relationship"""
-  games(
+type query_root {
+  """
+  fetch data from the table: "games_library.GameClients"
+  """
+  gameClients(
     """distinct select on columns"""
-    distinct_on: [games_select_column!]
+    distinct_on: [gameClients_select_column!]
 
     """limit the number of rows returned"""
     limit: Int
@@ -1130,16 +836,104 @@ type platforms {
     offset: Int
 
     """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
+    order_by: [gameClients_order_by!]
 
     """filter the rows returned"""
-    where: games_bool_exp
-  ): [games!]!
+    where: gameClients_bool_exp
+  ): [gameClients!]!
+
+  """
+  fetch aggregated fields from the table: "games_library.GameClients"
+  """
+  gameClients_aggregate(
+    """distinct select on columns"""
+    distinct_on: [gameClients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameClients_order_by!]
+
+    """filter the rows returned"""
+    where: gameClients_bool_exp
+  ): gameClients_aggregate!
+
+  """
+  fetch data from the table: "games_library.GameClients" using primary key columns
+  """
+  gameClients_by_pk(id: Int!): gameClients
+
+  """
+  fetch data from the table: "games_library.GameStatuses"
+  """
+  gameStatuses(
+    """distinct select on columns"""
+    distinct_on: [gameStatuses_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameStatuses_order_by!]
+
+    """filter the rows returned"""
+    where: gameStatuses_bool_exp
+  ): [gameStatuses!]!
+
+  """
+  fetch aggregated fields from the table: "games_library.GameStatuses"
+  """
+  gameStatuses_aggregate(
+    """distinct select on columns"""
+    distinct_on: [gameStatuses_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameStatuses_order_by!]
+
+    """filter the rows returned"""
+    where: gameStatuses_bool_exp
+  ): gameStatuses_aggregate!
+
+  """
+  fetch data from the table: "games_library.GameStatuses" using primary key columns
+  """
+  gameStatuses_by_pk(id: String!): gameStatuses
+
+  """An array relationship"""
+  userGames(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): [userGames!]!
 
   """An aggregate relationship"""
-  games_aggregate(
+  userGames_aggregate(
     """distinct select on columns"""
-    distinct_on: [games_select_column!]
+    distinct_on: [userGames_select_column!]
 
     """limit the number of rows returned"""
     limit: Int
@@ -1148,557 +942,692 @@ type platforms {
     offset: Int
 
     """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
+    order_by: [userGames_order_by!]
 
     """filter the rows returned"""
-    where: games_bool_exp
-  ): games_aggregate!
+    where: userGames_bool_exp
+  ): userGames_aggregate!
+
+  """
+  fetch data from the table: "games_library.UserGames" using primary key columns
+  """
+  userGames_by_pk(id: Int!): userGames
+}
+
+type subscription_root {
+  """
+  fetch data from the table: "games_library.GameClients"
+  """
+  gameClients(
+    """distinct select on columns"""
+    distinct_on: [gameClients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameClients_order_by!]
+
+    """filter the rows returned"""
+    where: gameClients_bool_exp
+  ): [gameClients!]!
+
+  """
+  fetch aggregated fields from the table: "games_library.GameClients"
+  """
+  gameClients_aggregate(
+    """distinct select on columns"""
+    distinct_on: [gameClients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameClients_order_by!]
+
+    """filter the rows returned"""
+    where: gameClients_bool_exp
+  ): gameClients_aggregate!
+
+  """
+  fetch data from the table: "games_library.GameClients" using primary key columns
+  """
+  gameClients_by_pk(id: Int!): gameClients
+
+  """
+  fetch data from the table in a streaming manner: "games_library.GameClients"
+  """
+  gameClients_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [gameClients_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: gameClients_bool_exp
+  ): [gameClients!]!
+
+  """
+  fetch data from the table: "games_library.GameStatuses"
+  """
+  gameStatuses(
+    """distinct select on columns"""
+    distinct_on: [gameStatuses_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameStatuses_order_by!]
+
+    """filter the rows returned"""
+    where: gameStatuses_bool_exp
+  ): [gameStatuses!]!
+
+  """
+  fetch aggregated fields from the table: "games_library.GameStatuses"
+  """
+  gameStatuses_aggregate(
+    """distinct select on columns"""
+    distinct_on: [gameStatuses_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [gameStatuses_order_by!]
+
+    """filter the rows returned"""
+    where: gameStatuses_bool_exp
+  ): gameStatuses_aggregate!
+
+  """
+  fetch data from the table: "games_library.GameStatuses" using primary key columns
+  """
+  gameStatuses_by_pk(id: String!): gameStatuses
+
+  """
+  fetch data from the table in a streaming manner: "games_library.GameStatuses"
+  """
+  gameStatuses_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [gameStatuses_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: gameStatuses_bool_exp
+  ): [gameStatuses!]!
+
+  """An array relationship"""
+  userGames(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): [userGames!]!
+
+  """An aggregate relationship"""
+  userGames_aggregate(
+    """distinct select on columns"""
+    distinct_on: [userGames_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [userGames_order_by!]
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): userGames_aggregate!
+
+  """
+  fetch data from the table: "games_library.UserGames" using primary key columns
+  """
+  userGames_by_pk(id: Int!): userGames
+
+  """
+  fetch data from the table in a streaming manner: "games_library.UserGames"
+  """
+  userGames_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [userGames_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: userGames_bool_exp
+  ): [userGames!]!
+}
+
+"""
+columns and relationships of "games_library.UserGames"
+"""
+type userGames {
+  assigned_at: date!
+  client_id: Int
+
+  """An object relationship"""
+  gameClient: gameClients
+  game_id: Int!
   id: Int!
-  name: String!
+  platform_id: Int!
+  purchase_price: numeric
+  status: gameStatuses_enum
+  uuid: uuid!
 }
 
 """
-aggregated selection of "games_library.platforms"
+aggregated selection of "games_library.UserGames"
 """
-type platforms_aggregate {
-  aggregate: platforms_aggregate_fields
-  nodes: [platforms!]!
+type userGames_aggregate {
+  aggregate: userGames_aggregate_fields
+  nodes: [userGames!]!
+}
+
+input userGames_aggregate_bool_exp {
+  count: userGames_aggregate_bool_exp_count
+}
+
+input userGames_aggregate_bool_exp_count {
+  arguments: [userGames_select_column!]
+  distinct: Boolean
+  filter: userGames_bool_exp
+  predicate: Int_comparison_exp!
 }
 
 """
-aggregate fields of "games_library.platforms"
+aggregate fields of "games_library.UserGames"
 """
-type platforms_aggregate_fields {
-  avg: platforms_avg_fields
-  count(columns: [platforms_select_column!], distinct: Boolean): Int!
-  max: platforms_max_fields
-  min: platforms_min_fields
-  stddev: platforms_stddev_fields
-  stddev_pop: platforms_stddev_pop_fields
-  stddev_samp: platforms_stddev_samp_fields
-  sum: platforms_sum_fields
-  var_pop: platforms_var_pop_fields
-  var_samp: platforms_var_samp_fields
-  variance: platforms_variance_fields
+type userGames_aggregate_fields {
+  avg: userGames_avg_fields
+  count(columns: [userGames_select_column!], distinct: Boolean): Int!
+  max: userGames_max_fields
+  min: userGames_min_fields
+  stddev: userGames_stddev_fields
+  stddev_pop: userGames_stddev_pop_fields
+  stddev_samp: userGames_stddev_samp_fields
+  sum: userGames_sum_fields
+  var_pop: userGames_var_pop_fields
+  var_samp: userGames_var_samp_fields
+  variance: userGames_variance_fields
+}
+
+"""
+order by aggregate values of table "games_library.UserGames"
+"""
+input userGames_aggregate_order_by {
+  avg: userGames_avg_order_by
+  count: order_by
+  max: userGames_max_order_by
+  min: userGames_min_order_by
+  stddev: userGames_stddev_order_by
+  stddev_pop: userGames_stddev_pop_order_by
+  stddev_samp: userGames_stddev_samp_order_by
+  sum: userGames_sum_order_by
+  var_pop: userGames_var_pop_order_by
+  var_samp: userGames_var_samp_order_by
+  variance: userGames_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "games_library.UserGames"
+"""
+input userGames_arr_rel_insert_input {
+  data: [userGames_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: userGames_on_conflict
 }
 
 """aggregate avg on columns"""
-type platforms_avg_fields {
+type userGames_avg_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
 }
 
 """
-Boolean expression to filter rows from the table "games_library.platforms". All fields are combined with a logical 'AND'.
+order by avg() on columns of table "games_library.UserGames"
 """
-input platforms_bool_exp {
-  _and: [platforms_bool_exp!]
-  _not: platforms_bool_exp
-  _or: [platforms_bool_exp!]
-  games: games_bool_exp
-  games_aggregate: games_aggregate_bool_exp
+input userGames_avg_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "games_library.UserGames". All fields are combined with a logical 'AND'.
+"""
+input userGames_bool_exp {
+  _and: [userGames_bool_exp!]
+  _not: userGames_bool_exp
+  _or: [userGames_bool_exp!]
+  assigned_at: date_comparison_exp
+  client_id: Int_comparison_exp
+  gameClient: gameClients_bool_exp
+  game_id: Int_comparison_exp
   id: Int_comparison_exp
-  name: String_comparison_exp
+  platform_id: Int_comparison_exp
+  purchase_price: numeric_comparison_exp
+  status: gameStatuses_enum_comparison_exp
+  uuid: uuid_comparison_exp
 }
 
 """
-unique or primary key constraints on table "games_library.platforms"
+unique or primary key constraints on table "games_library.UserGames"
 """
-enum platforms_constraint {
-  """
-  unique or primary key constraint on columns "name"
-  """
-  platforms_name_key
-
+enum userGames_constraint {
   """
   unique or primary key constraint on columns "id"
   """
-  platforms_pkey
+  UserGames_pkey
 }
 
 """
-input type for incrementing numeric columns in table "games_library.platforms"
+input type for incrementing numeric columns in table "games_library.UserGames"
 """
-input platforms_inc_input {
+input userGames_inc_input {
+  client_id: Int
+  game_id: Int
   id: Int
+  platform_id: Int
+  purchase_price: numeric
 }
 
 """
-input type for inserting data into table "games_library.platforms"
+input type for inserting data into table "games_library.UserGames"
 """
-input platforms_insert_input {
-  games: games_arr_rel_insert_input
+input userGames_insert_input {
+  assigned_at: date
+  client_id: Int
+  gameClient: gameClients_obj_rel_insert_input
+  game_id: Int
   id: Int
-  name: String
+  platform_id: Int
+  purchase_price: numeric
+  status: gameStatuses_enum
+  uuid: uuid
 }
 
 """aggregate max on columns"""
-type platforms_max_fields {
+type userGames_max_fields {
+  assigned_at: date
+  client_id: Int
+  game_id: Int
   id: Int
-  name: String
+  platform_id: Int
+  purchase_price: numeric
+  uuid: uuid
+}
+
+"""
+order by max() on columns of table "games_library.UserGames"
+"""
+input userGames_max_order_by {
+  assigned_at: order_by
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+  uuid: order_by
 }
 
 """aggregate min on columns"""
-type platforms_min_fields {
+type userGames_min_fields {
+  assigned_at: date
+  client_id: Int
+  game_id: Int
   id: Int
-  name: String
+  platform_id: Int
+  purchase_price: numeric
+  uuid: uuid
 }
 
 """
-response of any mutation on the table "games_library.platforms"
+order by min() on columns of table "games_library.UserGames"
 """
-type platforms_mutation_response {
+input userGames_min_order_by {
+  assigned_at: order_by
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+  uuid: order_by
+}
+
+"""
+response of any mutation on the table "games_library.UserGames"
+"""
+type userGames_mutation_response {
   """number of rows affected by the mutation"""
   affected_rows: Int!
 
   """data from the rows affected by the mutation"""
-  returning: [platforms!]!
+  returning: [userGames!]!
 }
 
 """
-input type for inserting object relation for remote table "games_library.platforms"
+on_conflict condition type for table "games_library.UserGames"
 """
-input platforms_obj_rel_insert_input {
-  data: platforms_insert_input!
-
-  """upsert condition"""
-  on_conflict: platforms_on_conflict
+input userGames_on_conflict {
+  constraint: userGames_constraint!
+  update_columns: [userGames_update_column!]! = []
+  where: userGames_bool_exp
 }
 
-"""
-on_conflict condition type for table "games_library.platforms"
-"""
-input platforms_on_conflict {
-  constraint: platforms_constraint!
-  update_columns: [platforms_update_column!]! = []
-  where: platforms_bool_exp
-}
-
-"""Ordering options when selecting data from "games_library.platforms"."""
-input platforms_order_by {
-  games_aggregate: games_aggregate_order_by
+"""Ordering options when selecting data from "games_library.UserGames"."""
+input userGames_order_by {
+  assigned_at: order_by
+  client_id: order_by
+  gameClient: gameClients_order_by
+  game_id: order_by
   id: order_by
-  name: order_by
+  platform_id: order_by
+  purchase_price: order_by
+  status: order_by
+  uuid: order_by
 }
 
-"""primary key columns input for table: games_library.platforms"""
-input platforms_pk_columns_input {
+"""primary key columns input for table: games_library.UserGames"""
+input userGames_pk_columns_input {
   id: Int!
 }
 
 """
-select columns of table "games_library.platforms"
+select columns of table "games_library.UserGames"
 """
-enum platforms_select_column {
+enum userGames_select_column {
+  """column name"""
+  assigned_at
+
+  """column name"""
+  client_id
+
+  """column name"""
+  game_id
+
   """column name"""
   id
 
   """column name"""
-  name
+  platform_id
+
+  """column name"""
+  purchase_price
+
+  """column name"""
+  status
+
+  """column name"""
+  uuid
 }
 
 """
-input type for updating data in table "games_library.platforms"
+input type for updating data in table "games_library.UserGames"
 """
-input platforms_set_input {
+input userGames_set_input {
+  assigned_at: date
+  client_id: Int
+  game_id: Int
   id: Int
-  name: String
+  platform_id: Int
+  purchase_price: numeric
+  status: gameStatuses_enum
+  uuid: uuid
 }
 
 """aggregate stddev on columns"""
-type platforms_stddev_fields {
+type userGames_stddev_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
+}
+
+"""
+order by stddev() on columns of table "games_library.UserGames"
+"""
+input userGames_stddev_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
 }
 
 """aggregate stddev_pop on columns"""
-type platforms_stddev_pop_fields {
+type userGames_stddev_pop_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
+}
+
+"""
+order by stddev_pop() on columns of table "games_library.UserGames"
+"""
+input userGames_stddev_pop_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
 }
 
 """aggregate stddev_samp on columns"""
-type platforms_stddev_samp_fields {
+type userGames_stddev_samp_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
 }
 
 """
-Streaming cursor of the table "platforms"
+order by stddev_samp() on columns of table "games_library.UserGames"
 """
-input platforms_stream_cursor_input {
+input userGames_stddev_samp_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+}
+
+"""
+Streaming cursor of the table "userGames"
+"""
+input userGames_stream_cursor_input {
   """Stream column input with initial value"""
-  initial_value: platforms_stream_cursor_value_input!
+  initial_value: userGames_stream_cursor_value_input!
 
   """cursor ordering"""
   ordering: cursor_ordering
 }
 
 """Initial value of the column from where the streaming should start"""
-input platforms_stream_cursor_value_input {
+input userGames_stream_cursor_value_input {
+  assigned_at: date
+  client_id: Int
+  game_id: Int
   id: Int
-  name: String
+  platform_id: Int
+  purchase_price: numeric
+  status: gameStatuses_enum
+  uuid: uuid
 }
 
 """aggregate sum on columns"""
-type platforms_sum_fields {
+type userGames_sum_fields {
+  client_id: Int
+  game_id: Int
   id: Int
+  platform_id: Int
+  purchase_price: numeric
 }
 
 """
-update columns of table "games_library.platforms"
+order by sum() on columns of table "games_library.UserGames"
 """
-enum platforms_update_column {
+input userGames_sum_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+}
+
+"""
+update columns of table "games_library.UserGames"
+"""
+enum userGames_update_column {
+  """column name"""
+  assigned_at
+
+  """column name"""
+  client_id
+
+  """column name"""
+  game_id
+
   """column name"""
   id
 
   """column name"""
-  name
+  platform_id
+
+  """column name"""
+  purchase_price
+
+  """column name"""
+  status
+
+  """column name"""
+  uuid
 }
 
-input platforms_updates {
+input userGames_updates {
   """increments the numeric columns with given value of the filtered values"""
-  _inc: platforms_inc_input
+  _inc: userGames_inc_input
 
   """sets the columns of the filtered rows to the given values"""
-  _set: platforms_set_input
+  _set: userGames_set_input
 
   """filter the rows which have to be updated"""
-  where: platforms_bool_exp!
+  where: userGames_bool_exp!
 }
 
 """aggregate var_pop on columns"""
-type platforms_var_pop_fields {
+type userGames_var_pop_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
+}
+
+"""
+order by var_pop() on columns of table "games_library.UserGames"
+"""
+input userGames_var_pop_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
 }
 
 """aggregate var_samp on columns"""
-type platforms_var_samp_fields {
+type userGames_var_samp_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
+}
+
+"""
+order by var_samp() on columns of table "games_library.UserGames"
+"""
+input userGames_var_samp_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
 }
 
 """aggregate variance on columns"""
-type platforms_variance_fields {
+type userGames_variance_fields {
+  client_id: Float
+  game_id: Float
   id: Float
+  platform_id: Float
+  purchase_price: Float
 }
-
-type query_root {
-  """
-  fetch data from the table: "games_library.devices"
-  """
-  devices(
-    """distinct select on columns"""
-    distinct_on: [devices_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [devices_order_by!]
-
-    """filter the rows returned"""
-    where: devices_bool_exp
-  ): [devices!]!
-
-  """
-  fetch aggregated fields from the table: "games_library.devices"
-  """
-  devices_aggregate(
-    """distinct select on columns"""
-    distinct_on: [devices_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [devices_order_by!]
-
-    """filter the rows returned"""
-    where: devices_bool_exp
-  ): devices_aggregate!
-
-  """
-  fetch data from the table: "games_library.devices" using primary key columns
-  """
-  devices_by_pk(id: Int!): devices
-
-  """An array relationship"""
-  games(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): [games!]!
-
-  """An aggregate relationship"""
-  games_aggregate(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): games_aggregate!
-
-  """
-  fetch data from the table: "games_library.games" using primary key columns
-  """
-  games_by_pk(id: Int!): games
-
-  """
-  fetch data from the table: "games_library.platforms"
-  """
-  platforms(
-    """distinct select on columns"""
-    distinct_on: [platforms_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [platforms_order_by!]
-
-    """filter the rows returned"""
-    where: platforms_bool_exp
-  ): [platforms!]!
-
-  """
-  fetch aggregated fields from the table: "games_library.platforms"
-  """
-  platforms_aggregate(
-    """distinct select on columns"""
-    distinct_on: [platforms_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [platforms_order_by!]
-
-    """filter the rows returned"""
-    where: platforms_bool_exp
-  ): platforms_aggregate!
-
-  """
-  fetch data from the table: "games_library.platforms" using primary key columns
-  """
-  platforms_by_pk(id: Int!): platforms
-}
-
-type subscription_root {
-  """
-  fetch data from the table: "games_library.devices"
-  """
-  devices(
-    """distinct select on columns"""
-    distinct_on: [devices_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [devices_order_by!]
-
-    """filter the rows returned"""
-    where: devices_bool_exp
-  ): [devices!]!
-
-  """
-  fetch aggregated fields from the table: "games_library.devices"
-  """
-  devices_aggregate(
-    """distinct select on columns"""
-    distinct_on: [devices_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [devices_order_by!]
-
-    """filter the rows returned"""
-    where: devices_bool_exp
-  ): devices_aggregate!
-
-  """
-  fetch data from the table: "games_library.devices" using primary key columns
-  """
-  devices_by_pk(id: Int!): devices
-
-  """
-  fetch data from the table in a streaming manner: "games_library.devices"
-  """
-  devices_stream(
-    """maximum number of rows returned in a single batch"""
-    batch_size: Int!
-
-    """cursor to stream the results returned by the query"""
-    cursor: [devices_stream_cursor_input]!
-
-    """filter the rows returned"""
-    where: devices_bool_exp
-  ): [devices!]!
-
-  """An array relationship"""
-  games(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): [games!]!
-
-  """An aggregate relationship"""
-  games_aggregate(
-    """distinct select on columns"""
-    distinct_on: [games_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [games_order_by!]
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): games_aggregate!
-
-  """
-  fetch data from the table: "games_library.games" using primary key columns
-  """
-  games_by_pk(id: Int!): games
-
-  """
-  fetch data from the table in a streaming manner: "games_library.games"
-  """
-  games_stream(
-    """maximum number of rows returned in a single batch"""
-    batch_size: Int!
-
-    """cursor to stream the results returned by the query"""
-    cursor: [games_stream_cursor_input]!
-
-    """filter the rows returned"""
-    where: games_bool_exp
-  ): [games!]!
-
-  """
-  fetch data from the table: "games_library.platforms"
-  """
-  platforms(
-    """distinct select on columns"""
-    distinct_on: [platforms_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [platforms_order_by!]
-
-    """filter the rows returned"""
-    where: platforms_bool_exp
-  ): [platforms!]!
-
-  """
-  fetch aggregated fields from the table: "games_library.platforms"
-  """
-  platforms_aggregate(
-    """distinct select on columns"""
-    distinct_on: [platforms_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [platforms_order_by!]
-
-    """filter the rows returned"""
-    where: platforms_bool_exp
-  ): platforms_aggregate!
-
-  """
-  fetch data from the table: "games_library.platforms" using primary key columns
-  """
-  platforms_by_pk(id: Int!): platforms
-
-  """
-  fetch data from the table in a streaming manner: "games_library.platforms"
-  """
-  platforms_stream(
-    """maximum number of rows returned in a single batch"""
-    batch_size: Int!
-
-    """cursor to stream the results returned by the query"""
-    cursor: [platforms_stream_cursor_input]!
-
-    """filter the rows returned"""
-    where: platforms_bool_exp
-  ): [platforms!]!
-}
-
-scalar timestamptz
 
 """
-Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'.
+order by variance() on columns of table "games_library.UserGames"
 """
-input timestamptz_comparison_exp {
-  _eq: timestamptz
-  _gt: timestamptz
-  _gte: timestamptz
-  _in: [timestamptz!]
+input userGames_variance_order_by {
+  client_id: order_by
+  game_id: order_by
+  id: order_by
+  platform_id: order_by
+  purchase_price: order_by
+}
+
+scalar uuid
+
+"""
+Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'.
+"""
+input uuid_comparison_exp {
+  _eq: uuid
+  _gt: uuid
+  _gte: uuid
+  _in: [uuid!]
   _is_null: Boolean
-  _lt: timestamptz
-  _lte: timestamptz
-  _neq: timestamptz
-  _nin: [timestamptz!]
+  _lt: uuid
+  _lte: uuid
+  _neq: uuid
+  _nin: [uuid!]
 }
