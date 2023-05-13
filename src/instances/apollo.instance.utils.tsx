@@ -1,6 +1,11 @@
 import { RetryLink } from '@apollo/client/link/retry'
 import { onError } from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context'
+import { HttpLink } from '@apollo/client'
+
+export const backendHttpLink = new HttpLink({
+  uri: 'https://robust-swine-16.hasura.app/v1/graphql',
+})
 
 export const authLink = setContext((_, { headers }) => {
   return {
